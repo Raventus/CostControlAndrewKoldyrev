@@ -1,20 +1,18 @@
-import React from "react";
-import { CostItemType } from "../Types/CostItemType";
+import React from 'react'
+import { type CallbackFunction, type CostItemType } from '../Types/CostItemType'
 
-export class CostItemAdd extends React.Component<{onAdd: Function, costItem: CostItemType}, CostItemType> {
+export class CostItemAdd extends React.Component<{ onAdd: CallbackFunction, costItem: CostItemType }, CostItemType> {
+  constructor (props: { onAdd: CallbackFunction, costItem: CostItemType }) {
+    super(props)
+    this.state = this.props.costItem
+  }
 
-    constructor(props : { onAdd: Function, costItem: CostItemType }){
-        super(props);
-        this.state = this.props.costItem;
-      }
+  onCostItemAdd (): void {
+    this.props.onAdd()
+  }
 
-    onCostItemAdd(){
-        debugger;
-        this.props.onAdd();
-    }
-    
-    render() {
-        return (
+  render (): JSX.Element | null {
+    return (
         <div>
             <div>
                 <div>Название: </div>
@@ -22,18 +20,18 @@ export class CostItemAdd extends React.Component<{onAdd: Function, costItem: Cos
             </div>
             <div>
                 <div>Цена: </div>
-                <input type="text"  defaultValue={this.state.cost}/>
+                <input type="text" defaultValue={this.state.cost}/>
             </div>
             <div>
                 <div>Магазин: </div>
-                <input type="text"  defaultValue={this.state.store}/>
+                <input type="text" defaultValue={this.state.store}/>
             </div>
             <div>
                 <div>Категория: </div>
-                <input type="text"  defaultValue={this.state.category}/>
+                <input type="text" defaultValue={this.state.category}/>
             </div>
             <button onClick={this.onCostItemAdd.bind(this)}>Добавить</button>
         </div>
-        )
-    }
+    )
+  }
 }

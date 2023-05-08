@@ -1,6 +1,8 @@
-export type CostItemType = {
-    name : string,
-    cost : number,
-    category : string,
-    store : string
-}
+export interface CostItemType {
+  name: string
+  cost: number
+  category: string
+  store: string
+};
+
+export type CallbackFunction = () => void

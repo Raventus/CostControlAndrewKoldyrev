@@ -1,20 +1,20 @@
-import React, { MouseEventHandler } from 'react'
-import { CostItemType } from '../Types/CostItemType'
+import React from 'react'
+import { type CostItemType, type CallbackFunction } from '../Types/CostItemType'
 import classes from './CostItem.module.css'
 
-export class CostItem extends React.Component<{item : CostItemType, onDeleted : Function, key: number}, { count: number }> {
+export class CostItem extends React.Component<{ item: CostItemType, onDeleted: CallbackFunction, key: number }, { count: number }> {
+  onDeleteItem = (): void => {
+    this.props.onDeleted()
+  }
 
-    onDeleteItem  = () => {
-        this.props.onDeleted();
-    }
-    render() {
-        return(
+  render (): JSX.Element | null {
+    return (
         <div className = {classes['item-border']}>
         <div >
-            Название : { this.props.item.name } 
+            Название : { this.props.item.name }
         </div>
         <div>
-            Стоимость : { this.props.item.cost } 
+            Стоимость : { this.props.item.cost }
         </div>
         <div>
             Категория : { this.props.item.category }
@@ -24,5 +24,5 @@ export class CostItem extends React.Component<{item : CostItemType, onDeleted : 
         </div>
         <button onClick={this.onDeleteItem}>Удалить</button>
     </div>)
-    }
-} 
+  }
+}

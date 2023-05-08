@@ -1,36 +1,35 @@
 import React from 'react'
-import { CostItemType } from './Types/CostItemType';
-import { CostItem } from './CostItem/CostItem';
-import { CostItemAdd } from './CostItemAdd/CostItemAdd';
+import { type CostItemType } from './Types/CostItemType'
+import { CostItem } from './CostItem/CostItem'
+import { CostItemAdd } from './CostItemAdd/CostItemAdd'
 
-export class CostList extends React.Component<{items: CostItemType[] }, {costItems: CostItemType[], showForm: boolean}> {
-
-  constructor(props : {items: CostItemType[]}){
-    super(props);
+export class CostList extends React.Component<{ items: CostItemType[] }, { costItems: CostItemType[], showForm: boolean }> {
+  constructor (props: { items: CostItemType[] }) {
+    super(props)
     this.state = {
       costItems: this.props.items,
       showForm: false
     }
     this.brandNewCostItem = {
-      name: "example",
+      name: 'example',
       cost: 0,
-      category: "exampleCat",
-      store: "exampleStore"
+      category: 'exampleCat',
+      store: 'exampleStore'
     }
   }
-  brandNewCostItem: CostItemType;
 
-  toogleForm() {
-    let showForm = !this.state.showForm;
-    this.setState ({showForm})
+  brandNewCostItem: CostItemType
+
+  toogleForm (): void {
+    const showForm = !this.state.showForm
+    this.setState({ showForm })
   }
 
-  addCostItem (item : CostItemType) {
-    debugger;
-    const costItems = this.state.costItems.concat(); 
-    costItems.push(item);
-    let showForm = false;
-    this.setState ({costItems, showForm})
+  addCostItem (item: CostItemType): void {
+    const costItems = this.state.costItems.concat()
+    costItems.push(item)
+    const showForm = false
+    this.setState({ costItems, showForm })
 
     this.brandNewCostItem = {
       name: '',
@@ -40,30 +39,28 @@ export class CostList extends React.Component<{items: CostItemType[] }, {costIte
     }
   }
 
-  deleteCostItem (index: number) : void {
-    const costItems = this.state.costItems.concat(); 
-    costItems.splice(index, 1);  
-    this.setState ({costItems})
+  deleteCostItem (index: number): void {
+    const costItems = this.state.costItems.concat()
+    costItems.splice(index, 1)
+    this.setState({ costItems })
   }
 
-    render() {
-        return (
-          <div>
-            <button onClick={this.toogleForm.bind(this)}>Добавить</button>
+  render (): JSX.Element | null {
+    return (
+      <div>
+        <button onClick={this.toogleForm.bind(this)}>Добавить</button>
 
-            { this.state.showForm ?
-            <CostItemAdd onAdd = {this.addCostItem.bind(this, this.brandNewCostItem)} costItem = { this.brandNewCostItem }/> :
-            null }
-            {
-                this.state.costItems.map((itemCost, index) => 
-                <CostItem 
-                  item={itemCost}
-                  key={index}
-                  onDeleted={this.deleteCostItem.bind(this, index)}/>)
-            }
-          </div>
-        );
-    }
+        {this.state.showForm
+          ? <CostItemAdd onAdd={this.addCostItem.bind(this, this.brandNewCostItem)} costItem={this.brandNewCostItem} />
+          : null}
+        {
+          this.state.costItems.map((itemCost, index) =>
+            <CostItem
+              item={itemCost}
+              key={index}
+              onDeleted={this.deleteCostItem.bind(this, index)} />)
+        }
+      </div>
+    )
+  }
 }
-
-

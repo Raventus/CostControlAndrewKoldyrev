@@ -54,11 +54,13 @@ export class CostList extends React.Component<{ items: CostItemType[] }, { costI
           ? <CostItemAdd onAdd={this.addCostItem.bind(this, this.brandNewCostItem)} costItem={this.brandNewCostItem} />
           : null}
         {
-          this.state.costItems.map((itemCost, index) =>
+          (this.state.costItems !== undefined)
+            ? this.state.costItems.map((itemCost, index) =>
             <CostItem
               item={itemCost}
               key={index}
               onDeleted={this.deleteCostItem.bind(this, index)} />)
+            : 'Здесь пока нет элементов покупок'
         }
       </div>
     )

@@ -5,6 +5,7 @@
   "main": "index.tsx",
   "scripts": {
     "start": "webpack serve -open",
+    "build": "webpack",
     "test": "jest",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",

@@ -2,23 +2,22 @@ import React from 'react'
 import { type CostItemType } from './Types/CostItemType'
 import { CostItem } from './CostItem/CostItem'
 import { CostItemAdd } from './CostItemAdd/CostItemAdd'
+import { type ICostItemListProps, type ICostItemListState } from './Types/CostItemListTypes'
 
-export class CostList extends React.Component<{ items: CostItemType[] }, { costItems: CostItemType[], showForm: boolean }> {
-  constructor (props: { items: CostItemType[] }) {
+export class CostList extends React.Component<ICostItemListProps, ICostItemListState> {
+  constructor (props: ICostItemListProps) {
     super(props)
     this.state = {
       costItems: this.props.items,
-      showForm: false
-    }
-    this.brandNewCostItem = {
-      name: 'example',
-      cost: 0,
-      category: 'exampleCat',
-      store: 'exampleStore'
+      showForm: false,
+      brandNewCostItem: {
+        name: 'example',
+        cost: 0,
+        category: 'exampleCat',
+        store: 'exampleStore'
+      }
     }
   }
-
-  brandNewCostItem: CostItemType
 
   toogleForm (): void {
     const showForm = !this.state.showForm
@@ -29,18 +28,17 @@ export class CostList extends React.Component<{ items: CostItemType[] }, { costI
     const costItems = this.state.costItems.concat()
     costItems.push(item)
     const showForm = false
-    this.setState({ costItems, showForm })
-
-    this.brandNewCostItem = {
+    const brandNewCostItem = {
       name: '',
       cost: 0,
       category: '',
       store: ''
     }
+    this.setState({ costItems, showForm, brandNewCostItem })
   }
 
   deleteCostItem (index: number): void {
-    const costItems = this.state.costItems.concat()
+    const costItems = [...this.state.costItems]
     costItems.splice(index, 1)
     this.setState({ costItems })
   }
@@ -50,11 +48,10 @@ export class CostList extends React.Component<{ items: CostItemType[] }, { costI
       <div>
         <button onClick={this.toogleForm.bind(this)}>Добавить</button>
 
-        {this.state.showForm
-          ? <CostItemAdd onAdd={this.addCostItem.bind(this, this.brandNewCostItem)} costItem={this.brandNewCostItem} />
-          : null}
+        { this.state.showForm &&
+        <CostItemAdd onAdd={this.addCostItem.bind(this, this.state.brandNewCostItem)} costItem={this.state.brandNewCostItem} /> }
         {
-          (this.state.costItems !== undefined)
+          this.state.costItems?.length > 0
             ? this.state.costItems.map((itemCost, index) =>
             <CostItem
               item={itemCost}

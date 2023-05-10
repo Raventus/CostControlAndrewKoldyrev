@@ -9,7 +9,7 @@ export default {
 export const Default = () => {
   const costItemExample = {
     name: 'storybook',
-    cost: 1000,
+    cost: 10000,
     category: 'Category',
     store: 'Store'
   }

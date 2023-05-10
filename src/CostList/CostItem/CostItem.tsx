@@ -1,8 +1,8 @@
 import React from 'react'
-import { type CostItemType, type CallbackFunction } from '../Types/CostItemType'
+import { type ICostItemLProps, type ICostItemState } from './Types/CostItemTypes'
 import classes from './CostItem.module.css'
 
-export class CostItem extends React.Component<{ item: CostItemType, onDeleted: CallbackFunction, key: number }, { count: number }> {
+export class CostItem extends React.Component<ICostItemLProps, ICostItemState> {
   onDeleteItem = (): void => {
     this.props.onDeleted()
   }

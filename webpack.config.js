@@ -9,7 +9,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(ts|js)x?$/,
+        test: /\.(t|j)sx?$/,
         exclude: /node_modules/,
         use: [
           {

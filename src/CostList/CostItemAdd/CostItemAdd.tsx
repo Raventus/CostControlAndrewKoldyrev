@@ -1,7 +1,8 @@
 import React from 'react'
 import { type CallbackFunction, type CostItemType } from '../Types/CostItemType'
+import { type ICostItemAddProps } from './Types/CostItemAddTypes'
 
-export class CostItemAdd extends React.Component<{ onAdd: CallbackFunction, costItem: CostItemType }, CostItemType> {
+export class CostItemAdd extends React.Component<ICostItemAddProps, CostItemType> {
   constructor (props: { onAdd: CallbackFunction, costItem: CostItemType }) {
     super(props)
     this.state = this.props.costItem

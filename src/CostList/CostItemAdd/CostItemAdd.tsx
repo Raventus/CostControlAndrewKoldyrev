@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { type CallbackFunction, type CostItemType } from '../Types/CostItemType'
+import { type CostItemType } from '../Types/CostItemType'
 
 export interface ICostItemAddProps {
-  onAdd: CallbackFunction
+  onAdd: () => void
   costItem: CostItemType
 };
 

@@ -4,5 +4,3 @@ export interface CostItemType {
   category: string
   store: string
 };
-
-export type CallbackFunction = () => void

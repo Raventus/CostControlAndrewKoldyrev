@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { type CostItemType, type CallbackFunction } from '..//Types/CostItemType'
-import classes from './CostItem.module.css'
+import { type CostItemType } from '..//Types/CostItemType'
+import classes from './CostItem.style.module.css'
 
 export interface ICostItemLProps {
   item: CostItemType
-  onDeleted: CallbackFunction
+  onDeleted: () => void
   key: number
 }
 

@@ -31,8 +31,7 @@ export class CostList extends Component<ICostItemListProps, ICostItemListState> 
   }
 
   addCostItem = (): void => {
-    const costItems = this.state.costItems.concat()
-    costItems.push(this.state.brandNewCostItem)
+    const costItems = [...this.state.costItems, this.state.brandNewCostItem]
     const showForm = false
     const brandNewCostItem = {
       name: '',

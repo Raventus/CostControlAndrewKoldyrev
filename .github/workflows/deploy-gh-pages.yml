@@ -1,0 +1,28 @@
+name: Deploy to GithubPages
+
+on:
+  push:
+    branches:
+      - homework2-createcomplexComponent-AndrewKoldyrev
+
+jobs:
+  deploy-to-gh-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Packages
+        run: |
+          npm install
+      - name: Build
+        run: |
+          npm run build
+      - name: Deploy
+        # https://github.com/marketplace/actions/deploy-to-github-pages
+        uses: JamesIves/github-pages-deploy-action@3.6.2
+        with:
+          GITHUB_TOKEN: ${{ secrets.ANDREW_KOLDYREV }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: build # The folder the action should deploy.
+          CLEAN: true # Automatically remove deleted files from the deploy branch

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack serve -open",
     "build": "webpack",
-    "test": "jest",
+    "test": "jest --coverage",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "npx tsc --noEmit && npx eslint ./src --ext .js,.ts,.tsx",

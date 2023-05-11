@@ -1,8 +1,18 @@
-import React from 'react'
-import { type ICostItemLProps, type ICostItemState } from './Types/CostItemTypes'
+import React, { Component } from 'react'
+import { type CostItemType, type CallbackFunction } from '..//Types/CostItemType'
 import classes from './CostItem.module.css'
 
-export class CostItem extends React.Component<ICostItemLProps, ICostItemState> {
+export interface ICostItemLProps {
+  item: CostItemType
+  onDeleted: CallbackFunction
+  key: number
+}
+
+export interface ICostItemState {
+  count: number
+}
+
+export class CostItem extends Component<ICostItemLProps, ICostItemState> {
   onDeleteItem = (): void => {
     this.props.onDeleted()
   }
@@ -22,7 +32,7 @@ export class CostItem extends React.Component<ICostItemLProps, ICostItemState> {
         <div>
             Магазин : { this.props.item.store }
         </div>
-        <button onClick={this.onDeleteItem}>Удалить</button>
+        <button onClick={ this.onDeleteItem }>Удалить</button>
     </div>)
   }
 }

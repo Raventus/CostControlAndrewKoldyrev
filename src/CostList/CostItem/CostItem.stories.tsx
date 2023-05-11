@@ -1,12 +1,13 @@
 import React from 'react'
 import { CostItem } from './CostItem'
+import { type CallbackFunction } from '../Types/CostItemType'
 
 export default {
   title: 'UI/CostItem',
   component: CostItem
 }
 
-export const Default = () => {
+export const Default = (): JSX.Element => {
   const costItemExample = {
     name: 'storybook',
     cost: 10000,
@@ -14,10 +15,13 @@ export const Default = () => {
     store: 'Store'
   }
 
-  return <CostItem item={costItemExample} />
+  const onDeleted: CallbackFunction = () => {}
+  const key: number = 1
+
+  return <CostItem item={costItemExample} key = { key } onDeleted = {onDeleted} />
 }
 
-export const WithoutValues = () => {
+export const WithoutValues = (): JSX.Element => {
   const costItemExample = {
     name: '',
     cost: 0,
@@ -25,5 +29,8 @@ export const WithoutValues = () => {
     store: ''
   }
 
-  return <CostItem item={costItemExample} />
+  const onDeleted: CallbackFunction = () => {}
+  const key: number = 1
+
+  return <CostItem item={costItemExample} key = { key } onDeleted = {onDeleted} />
 }

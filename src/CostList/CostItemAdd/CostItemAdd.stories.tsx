@@ -6,7 +6,7 @@ export default {
   component: CostItemAdd
 }
 
-export const Default = () => {
+export const Default = (): JSX.Element => {
   const costItemExample = {
     name: 'storybook',
     cost: 1000,
@@ -14,16 +14,21 @@ export const Default = () => {
     store: 'Store'
   }
 
-  return <CostItemAdd costItem={costItemExample} />
+  const onAddMock = (): void => {
+  }
+
+  return <CostItemAdd costItem={costItemExample} onAdd={onAddMock} />
 }
 
-export const WithoutValues = () => {
+export const WithoutValues = (): JSX.Element => {
   const costItemExample = {
     name: '',
     cost: 0,
     category: '',
     store: ''
   }
+  const onAddMock = (): void => {
+  }
 
-  return <CostItemAdd costItem={costItemExample} />
+  return <CostItemAdd costItem={costItemExample} onAdd={onAddMock} />
 }

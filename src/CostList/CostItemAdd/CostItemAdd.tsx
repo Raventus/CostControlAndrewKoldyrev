@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { type CallbackFunction, type CostItemType } from '../Types/CostItemType'
-import { type ICostItemAddProps } from './Types/CostItemAddTypes'
 
-export class CostItemAdd extends React.Component<ICostItemAddProps, CostItemType> {
-  constructor (props: { onAdd: CallbackFunction, costItem: CostItemType }) {
-    super(props)
-    this.state = this.props.costItem
-  }
+export interface ICostItemAddProps {
+  onAdd: CallbackFunction
+  costItem: CostItemType
+};
 
-  onCostItemAdd (): void {
+export class CostItemAdd extends Component<ICostItemAddProps, CostItemType> {
+  state = this.props.costItem
+
+  onCostItemAdd = (): void => {
     this.props.onAdd()
   }
 
@@ -31,7 +32,7 @@ export class CostItemAdd extends React.Component<ICostItemAddProps, CostItemType
                 <div>Категория: </div>
                 <input type="text" defaultValue={this.state.category}/>
             </div>
-            <button onClick={this.onCostItemAdd.bind(this)}>Добавить</button>
+            <button onClick={ this.onCostItemAdd }>Добавить</button>
         </div>
     )
   }

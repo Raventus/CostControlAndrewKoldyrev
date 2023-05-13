@@ -45,7 +45,9 @@ export class CostList extends Component<ICostItemListProps, ICostItemListState> 
           console.log(json)
         }
       })
-      .catch()
+      .catch((error) => {
+        console.log(error)
+      })
 
     window.addEventListener('click', this.handleClick)
   }

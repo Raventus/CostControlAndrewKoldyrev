@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "This is a graduate work for Otus. My name is Andrew Koldyrev",
   "main": "index.tsx",
-  "type": "module",
   "scripts": {
     "start": "webpack serve -open",
     "build": "webpack",

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { type CostItemType } from './Types/CostItemType'
 import { CostItem } from './CostItem/CostItem'
 import { CostItemAdd } from './CostItemAdd/CostItemAdd'
+import deepEqual from 'fast-deep-equal'
 
 export interface ICostItemListProps {
   items: CostItemType[]
@@ -14,15 +15,59 @@ export interface ICostItemListState {
 }
 
 export class CostList extends Component<ICostItemListProps, ICostItemListState> {
-  state = {
-    costItems: this.props.items,
-    showForm: false,
-    brandNewCostItem: {
-      name: 'example',
-      cost: 0,
-      category: 'exampleCat',
-      store: 'exampleStore'
+  constructor (props: ICostItemListProps) {
+    super(props)
+    this.state = {
+      costItems: this.props.items,
+      showForm: false,
+      brandNewCostItem: {
+        name: 'example',
+        cost: 0,
+        category: 'exampleCat',
+        store: 'exampleStore'
+      }
     }
+
+    this.addCostItem = this.addCostItem.bind(this)
+  }
+
+  handleClick = (e: MouseEvent): void => {
+    console.log({ x: e.clientX, y: e.clientY })
+  }
+
+  controller: AbortController = new AbortController()
+
+  async componentDidMount (): Promise<void> {
+    await fetch('https://jsonplaceholder.typicode.com/todos/1', { signal: this.controller.signal })
+      .then(async (response): Promise<void> => await response.json())
+      .then(json => {
+        if (!this.controller.signal.aborted) {
+          console.log(json)
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+
+    window.addEventListener('click', this.handleClick)
+  }
+
+  componentWillUnmount (): void {
+    this.controller.abort()
+    window.removeEventListener('click', this.handleClick)
+  }
+
+  componentDidUpdate (prevProps: Readonly<ICostItemListProps>, prevState: Readonly<ICostItemListState>, snapshot?: any): void {
+    if (this.state.costItems.some(x => x.category === ''.trim() || x.store === ''.trim() || x.cost <= 0 || x.name === ''.trim())) {
+      const items = this.state.costItems.filter(x => x.category !== ''.trim() && x.store !== ''.trim() && x.cost > 0 && x.name !== ''.trim())
+      this.setState({
+        costItems: items
+      })
+    }
+  }
+
+  shouldComponentUpdate (nextProps: Readonly<ICostItemListProps>, nextState: Readonly<ICostItemListState>, nextContext: any): boolean {
+    return !deepEqual(this.state, nextState)
   }
 
   toogleForm = (): void => {
@@ -30,7 +75,7 @@ export class CostList extends Component<ICostItemListProps, ICostItemListState> 
     this.setState({ showForm })
   }
 
-  addCostItem = (): void => {
+  addCostItem (): void {
     const costItems = [...this.state.costItems, this.state.brandNewCostItem]
     const showForm = false
     const brandNewCostItem = {

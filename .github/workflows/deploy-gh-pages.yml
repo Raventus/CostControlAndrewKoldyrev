@@ -3,7 +3,7 @@ name: Deploy to GithubPages
 on:
   push:
     branches:
-      - homework2-createcomplexComponent-AndrewKoldyrev
+      - homework4-lifeCycle
 
 jobs:
   deploy-to-gh-pages:

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { type CostItemType } from '../Types/CostItemType'
+import Button from '../../UI/Button/Button'
 
 export interface ICostItemAddProps {
   onAdd: () => void
@@ -32,7 +33,7 @@ export class CostItemAdd extends Component<ICostItemAddProps, CostItemType> {
                 <div>Категория: </div>
                 <input type="text" defaultValue={this.state.category}/>
             </div>
-            <button onClick={ this.onCostItemAdd }>Добавить</button>
+            <Button onClick={ this.onCostItemAdd } type='success' disabled={false}>Добавить</Button>
         </div>
     )
   }

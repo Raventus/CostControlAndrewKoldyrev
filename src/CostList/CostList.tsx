@@ -3,6 +3,8 @@ import { type CostItemType } from './Types/CostItemType'
 import { CostItem } from './CostItem/CostItem'
 import { CostItemAdd } from './CostItemAdd/CostItemAdd'
 import deepEqual from 'fast-deep-equal'
+import Button from '../UI/Button/Button'
+import classes from './CostList.style.module.css'
 
 export interface ICostItemListProps {
   items: CostItemType[]
@@ -95,8 +97,8 @@ export class CostList extends Component<ICostItemListProps, ICostItemListState> 
 
   render (): JSX.Element | null {
     return (
-      <div>
-        <button onClick={ this.toogleForm }>Добавить</button>
+      <div className={classes.CostItemList}>
+        <Button onClick={ this.toogleForm } disabled={false} type='primary'>Добавить</Button>
 
         { this.state.showForm &&
         <CostItemAdd onAdd={ this.addCostItem } costItem={this.state.brandNewCostItem} /> }

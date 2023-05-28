@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { type CostItemType } from './CostList/Types/CostItemType'
 import { CostList } from './CostList/CostList'
+import Layout from './hoc/Layout/Layout'
 
 const itemsArray: CostItemType[] = [
   {
@@ -34,6 +35,8 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   <React.StrictMode>
-    <CostList items={itemsArray} />
+    <Layout>
+      <CostList items={itemsArray} />
+    </Layout>
   </React.StrictMode>
 )

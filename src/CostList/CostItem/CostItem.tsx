@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { type CostItemType } from '..//Types/CostItemType'
-import classes from './CostItem.style.module.css'
+import classes from './CostItem.module.css'
+import Button from '../../UI/Button/Button'
 
 export interface ICostItemLProps {
   item: CostItemType
@@ -18,9 +19,14 @@ export class CostItem extends Component<ICostItemLProps, ICostItemState> {
   }
 
   render (): JSX.Element | null {
+    const cls = [
+      classes['item-border'],
+      classes.CostItem
+    ]
+
     return (
-        <div className = {classes['item-border']}>
-        <div >
+        <div className = {cls.join(' ')}>
+        <div>
             Название : { this.props.item.name }
         </div>
         <div>
@@ -32,7 +38,7 @@ export class CostItem extends Component<ICostItemLProps, ICostItemState> {
         <div>
             Магазин : { this.props.item.store }
         </div>
-        <button onClick={ this.onDeleteItem }>Удалить</button>
+        <Button onClick={ this.onDeleteItem } type='error' disabled={false}>Удалить</Button>
     </div>)
   }
 }

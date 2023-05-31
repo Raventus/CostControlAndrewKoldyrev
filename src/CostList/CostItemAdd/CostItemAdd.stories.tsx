@@ -17,7 +17,7 @@ export const Default = (): JSX.Element => {
   const onAddMock = (): void => {
   }
 
-  return <CostItemAdd costItem={costItemExample} onAdd={onAddMock} />
+  return <CostItemAdd costItem={costItemExample} onAdd={onAddMock} categories={['1', '2']}/>
 }
 
 export const WithoutValues = (): JSX.Element => {
@@ -30,5 +30,5 @@ export const WithoutValues = (): JSX.Element => {
   const onAddMock = (): void => {
   }
 
-  return <CostItemAdd costItem={costItemExample} onAdd={onAddMock} />
+  return <CostItemAdd costItem={costItemExample} onAdd={onAddMock} categories={['1', '2']}/>
 }

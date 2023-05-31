@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client'
 import { type CostItemType } from './CostList/Types/CostItemType'
 import { CostList } from './CostList/CostList'
 import Layout from './hoc/Layout/Layout'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Categories from './Categories/Categories'
 
 const itemsArray: CostItemType[] = [
   {
@@ -31,12 +33,24 @@ const itemsArray: CostItemType[] = [
   }
 ]
 
+const categories: string[] = [
+  'Фрукты',
+  'Сантехника',
+  'Техника',
+  'Книга'
+]
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
-  <React.StrictMode>
-    <Layout>
-      <CostList items={itemsArray} />
-    </Layout>
-  </React.StrictMode>
+  <BrowserRouter>
+    <React.StrictMode>
+      <Layout>
+      <Routes >
+        <Route path='/categories' element={ <Categories categories={categories} />}/>
+        <Route path='/' element={ <CostList items={itemsArray} categories={categories}/>}/>
+      </Routes >
+      </Layout>
+    </React.StrictMode>
+  </BrowserRouter>
 )

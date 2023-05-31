@@ -5,17 +5,11 @@ import '@testing-library/jest-dom'
 
 describe('CostItemAdd Test', () => {
   test('render CostList component', () => {
-    const newItem = {
-      name: 'BrandNewItem'
-    }
-    render(<CostItemAdd costItem = {newItem}/>)
+    render(<CostItemAdd categories={['1', '2']}/>)
     screen.debug()
   })
   test('CostList component contains', () => {
-    const newItem = {
-      name: 'BrandNewItem'
-    }
-    render(<CostItemAdd costItem = {newItem}/>)
-    expect(screen.getByText('Цена:')).toBeInTheDocument()
+    render(<CostItemAdd categories={['1', '2']}/>)
+    expect(screen.getByText('Цена')).toBeInTheDocument()
   })
 })

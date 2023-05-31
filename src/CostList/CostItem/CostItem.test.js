@@ -13,7 +13,8 @@ describe('CostItemAdd Test', () => {
   })
   test('CostList component contains', () => {
     const newItem = {
-      name: 'BrandNewItem'
+      name: 'BrandNewItem',
+      category: 'Фрукты'
     }
     render(<CostItem item = {newItem}/>)
     expect(screen.getByText('Стоимость :')).toBeInTheDocument()

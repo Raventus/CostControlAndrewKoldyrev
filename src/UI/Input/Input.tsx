@@ -6,7 +6,6 @@ interface InputProps {
   label: string
   value: string | number
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-
 }
 
 const Input = (props: InputProps): JSX.Element => {

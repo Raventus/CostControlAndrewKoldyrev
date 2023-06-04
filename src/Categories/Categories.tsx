@@ -8,16 +8,16 @@ export interface ICategoriesProps {
 class Categories extends React.PureComponent<ICategoriesProps> {
   render (): JSX.Element {
     return (
-    <div className= {classes.Categories}>
+      <div className={classes.Categories}>
         <div>Категории</div>
         <ol>
           {
             this.props.categories.map((category: string, index: number) => {
               return (
-              <li key={index}>{category}</li>
+                <li key={index}>{category}</li>
               )
             })
-        }
+          }
         </ol>
       </div>
     )

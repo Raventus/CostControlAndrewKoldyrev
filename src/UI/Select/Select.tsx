@@ -15,11 +15,13 @@ const Select = (props: ISelectProps): JSX.Element => {
             <label htmlFor={htmlFor}>{props.label}</label>
             <select id={htmlFor}
             value={props.value}
+            data-testId = 'select'
             onChange={props.onChange}
             >
                 {props.options.map((optionItem, index: number) => {
                   return (
                         <option
+                        data-testId = 'option'
                         value={optionItem}
                         key={optionItem + index.toString()}
                         >

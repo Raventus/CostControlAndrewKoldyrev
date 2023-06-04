@@ -60,14 +60,13 @@ export class CostItemAdd extends Component<ICostItemAddProps, ICostItemAddState>
     newCostItem.cost = +this.state.formControls.cost.value
     newCostItem.store = this.state.formControls.store.value
     newCostItem.name = this.state.formControls.name.value
-    console.log(newCostItem)
     this.props.onAdd(newCostItem)
   }
 
   renderInputs (): JSX.Element[] {
     return Object.keys(this.state.formControls)
       .map((controlName, index) => {
-        const control: any = (this.state.formControls as any)[controlName]
+        const control: IFormParams = (this.state.formControls)[controlName as keyof IAddCostFormInputs]
         return (
           <Input key={controlName + index.toString()}
             type={control.type}
@@ -83,7 +82,7 @@ export class CostItemAdd extends Component<ICostItemAddProps, ICostItemAddState>
 
   onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>, controlName: string): void => {
     const formControls = { ...this.state.formControls }
-    const control = { ...(this.state.formControls as any)[controlName] }
+    const control: IFormParams = { ...(this.state.formControls)[controlName as keyof IAddCostFormInputs] }
 
     control.value = event.target.value;
 

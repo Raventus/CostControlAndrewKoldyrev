@@ -6,12 +6,13 @@
   "scripts": {
     "start": "webpack serve -open",
     "build": "webpack",
-    "test": "jest --coverage",
+    "test": "jest --coverage && npm run coverage-badge",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "lint": "npx tsc --noEmit && npx eslint ./src --ext .js,.ts,.tsx",
     "lint:fix": "npm run lint -- --fix",
-    "chromatic": "npx chromatic --project-token=1a0f3dfedac3"
+    "chromatic": "npx chromatic --project-token=1a0f3dfedac3",
+    "coverage-badge": "coverage-badger -r coverage/clover.xml -d coverage/"
   },
   "repository": {
     "type": "git",
@@ -52,6 +53,7 @@
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "babel-loader": "^9.1.2",
     "chromatic": "^6.17.4",
+    "coverage-badger": "^1.0.1",
     "css-loader": "^6.7.3",
     "eslint": "^8.0.1",
     "eslint-config-standard-with-typescript": "^34.0.1",

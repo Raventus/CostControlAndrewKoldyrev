@@ -5,14 +5,10 @@ export interface ICategoriesProps {
   categories: string[]
 }
 
-class Categories extends React.Component<ICategoriesProps> {
-  shouldComponentUpdate (nextProps: Readonly<ICategoriesProps>, nextState: Readonly<unknown>, nextContext: any): boolean {
-    return false
-  }
-
+class Categories extends React.PureComponent<ICategoriesProps> {
   render (): JSX.Element {
     return (
-    <div className={classes.Categories}>
+    <div className= {classes.Categories}>
         <div>Категории</div>
         <ol>
           {

@@ -2,7 +2,7 @@ import React from 'react'
 import classes from './CategoriesContainer.module.css'
 import { type CostItemType } from '../CostList/Types/CostItemType'
 import CategoriesList from './CateforiesList/CategoriesList'
-import withBoxStyle from '../hoc/withBoxStyle/withBoxStyle'
+import { withBoxStyle } from '../hoc/withBoxStyle/withBoxStyle'
 
 export interface ICategoriesProps {
   categories: string[]
@@ -30,7 +30,7 @@ class CategoriesContainer extends React.PureComponent<ICategoriesProps, ICategor
   }
 
   SetCostsToCategories = (categories: string[], items: CostItemType[]): categoriesWithCosts[] => {
-    console.log('dspjds')
+    console.log()
     return categories.map((currentCategory, index) => {
       const category = currentCategory
       const costs = items.reduce((accumulator, currentValue) => {
@@ -53,11 +53,7 @@ class CategoriesContainer extends React.PureComponent<ICategoriesProps, ICategor
         <ol>
           {
             this.state.categoriesWithCosts.map((categoryWithCosts: categoriesWithCosts, index: number) => {
-              const categoryListProps = {
-                category: categoryWithCosts.category,
-                costs: categoryWithCosts.costs
-              }
-              const WithBoxStyleHoc = withBoxStyle(CategoriesList)(categoryListProps)
+              const WithBoxStyleHoc = withBoxStyle(CategoriesList)
               return <WithBoxStyleHoc key = {index} category={ categoryWithCosts.category} costs={categoryWithCosts.costs}/>
             })
         }

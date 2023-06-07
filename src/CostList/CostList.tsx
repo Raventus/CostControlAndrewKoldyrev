@@ -88,9 +88,12 @@ export class CostList extends Component<ICostItemListProps, ICostItemListState> 
       <div className={classes.CostItemList}>
         <Button onClick={ this.toogleForm } disabled={false} type='primary'>Добавить</Button>
 
-        { this.state.showForm &&
-        <CostItemAdd onAdd={ this.addCostItem } categories = {this.props.categories}/> }
         {
+          // 4. Условный рендеринг
+          this.state.showForm &&
+          <CostItemAdd onAdd={ this.addCostItem } categories = {this.props.categories}/> }
+        {
+          // 4. Условный рендеринг
           this.state.costItems?.length > 0
             ? this.state.costItems.map((itemCost, index) =>
             <CostItem

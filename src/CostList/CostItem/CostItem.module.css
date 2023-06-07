@@ -1,0 +1,20 @@
+.CostItem {
+    padding: 20px;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+.item-border {
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 5px 0 rgba (0, 0, 0 .14);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.CostItem div {
+    font-size: 20px;
+}

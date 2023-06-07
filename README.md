@@ -1,3 +1,8 @@
 # CostControlAndrewKoldyrev
+![Покрытие на данный момент :](./coverage/coverage.svg)
 
-Добашняя работа 4
+
+Добашняя работа 5
+
+- Добавлены стили
+

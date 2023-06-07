@@ -3,7 +3,7 @@ name: Deploy to GithubPages
 on:
   push:
     branches:
-      - homework4-lifeCycle
+      - homework5-forms
 
 jobs:
   deploy-to-gh-pages:

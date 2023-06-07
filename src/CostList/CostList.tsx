@@ -3,15 +3,17 @@ import { type CostItemType } from './Types/CostItemType'
 import { CostItem } from './CostItem/CostItem'
 import { CostItemAdd } from './CostItemAdd/CostItemAdd'
 import deepEqual from 'fast-deep-equal'
+import Button from '../UI/Button/Button'
+import classes from './CostList.style.module.css'
 
 export interface ICostItemListProps {
   items: CostItemType[]
+  categories: string[]
 };
 
 export interface ICostItemListState {
   costItems: CostItemType[]
   showForm: boolean
-  brandNewCostItem: CostItemType
 }
 
 export class CostList extends Component<ICostItemListProps, ICostItemListState> {
@@ -19,13 +21,7 @@ export class CostList extends Component<ICostItemListProps, ICostItemListState> 
     super(props)
     this.state = {
       costItems: this.props.items,
-      showForm: false,
-      brandNewCostItem: {
-        name: 'example',
-        cost: 0,
-        category: 'exampleCat',
-        store: 'exampleStore'
-      }
+      showForm: false
     }
 
     this.addCostItem = this.addCostItem.bind(this)
@@ -75,16 +71,10 @@ export class CostList extends Component<ICostItemListProps, ICostItemListState> 
     this.setState({ showForm })
   }
 
-  addCostItem (): void {
-    const costItems = [...this.state.costItems, this.state.brandNewCostItem]
+  addCostItem (newCostItem: CostItemType): void {
+    const costItems = [...this.state.costItems, newCostItem]
     const showForm = false
-    const brandNewCostItem = {
-      name: '',
-      cost: 0,
-      category: '',
-      store: ''
-    }
-    this.setState({ costItems, showForm, brandNewCostItem })
+    this.setState({ costItems, showForm })
   }
 
   deleteCostItem (index: number): void {
@@ -95,11 +85,11 @@ export class CostList extends Component<ICostItemListProps, ICostItemListState> 
 
   render (): JSX.Element | null {
     return (
-      <div>
-        <button onClick={ this.toogleForm }>Добавить</button>
+      <div className={classes.CostItemList}>
+        <Button onClick={ this.toogleForm } disabled={false} type='primary'>Добавить</Button>
 
         { this.state.showForm &&
-        <CostItemAdd onAdd={ this.addCostItem } costItem={this.state.brandNewCostItem} /> }
+        <CostItemAdd onAdd={ this.addCostItem } categories = {this.props.categories}/> }
         {
           this.state.costItems?.length > 0
             ? this.state.costItems.map((itemCost, index) =>

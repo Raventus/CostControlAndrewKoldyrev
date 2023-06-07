@@ -31,28 +31,6 @@ export class CostList extends Component<ICostItemListProps, ICostItemListState> 
     console.log({ x: e.clientX, y: e.clientY })
   }
 
-  controller: AbortController = new AbortController()
-
-  async componentDidMount (): Promise<void> {
-    await fetch('https://jsonplaceholder.typicode.com/todos/1', { signal: this.controller.signal })
-      .then(async (response): Promise<void> => await response.json())
-      .then(json => {
-        if (!this.controller.signal.aborted) {
-          console.log(json)
-        }
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-
-    window.addEventListener('click', this.handleClick)
-  }
-
-  componentWillUnmount (): void {
-    this.controller.abort()
-    window.removeEventListener('click', this.handleClick)
-  }
-
   componentDidUpdate (prevProps: Readonly<ICostItemListProps>, prevState: Readonly<ICostItemListState>, snapshot?: any): void {
     if (this.state.costItems.some(x => x.category === ''.trim() || x.store === ''.trim() || x.cost <= 0 || x.name === ''.trim())) {
       const items = this.state.costItems.filter(x => x.category !== ''.trim() && x.store !== ''.trim() && x.cost > 0 && x.name !== ''.trim())

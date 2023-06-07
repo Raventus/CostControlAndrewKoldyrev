@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface ICategoriesListProps {
+export interface ICategoriesListProps {
   category: string
   costs: number
 }

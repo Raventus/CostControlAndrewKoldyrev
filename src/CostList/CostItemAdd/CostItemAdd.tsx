@@ -19,6 +19,14 @@ interface IFormParams {
   value: string
   type: string
   label: string
+  errorMessage: string
+  valid: boolean
+  touched: false
+  validation: validationType
+}
+
+interface validationType {
+  required: boolean
 }
 
 interface IAddCostFormInputs {
@@ -33,17 +41,35 @@ export class CostItemAdd extends Component<ICostItemAddProps, ICostItemAddState>
       name: {
         value: '',
         type: 'text',
-        label: 'Наименование'
+        label: 'Наименование',
+        errorMessage: 'Введите корректное имя',
+        valid: false,
+        touched: false,
+        validation: {
+          required: false
+        }
       },
       store: {
         value: '',
         type: 'text',
-        label: 'Магазин'
+        label: 'Магазин',
+        errorMessage: 'Введите корректый магазин',
+        valid: false,
+        touched: false,
+        validation: {
+          required: false
+        }
       },
       cost: {
         value: '',
         type: 'text',
-        label: 'Цена'
+        label: 'Цена',
+        errorMessage: 'Введите корректную цену',
+        valid: false,
+        touched: false,
+        validation: {
+          required: false
+        }
       }
     },
     costItem: {
@@ -72,6 +98,10 @@ export class CostItemAdd extends Component<ICostItemAddProps, ICostItemAddState>
             type={control.type}
             value={control.value}
             label={control.label}
+            shouldValidate={false}
+            valid={control.valid}
+            touched={control.touched}
+            errorMessage={control.errorMessage}
             onChange={ event => {
               this.onChangeHandler(event, controlName)
             } }

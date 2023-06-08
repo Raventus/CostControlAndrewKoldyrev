@@ -3,7 +3,7 @@ name: Deploy to GithubPages
 on:
   push:
     branches:
-      - homework6-patterns
+      - homework7-routing
 
 jobs:
   deploy-to-gh-pages:

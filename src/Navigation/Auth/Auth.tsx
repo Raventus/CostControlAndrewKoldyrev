@@ -27,7 +27,6 @@ const Auth = (): JSX.Element => {
   const location = useLocation()
   const navigate = useNavigate()
   const onClick = (): void => {
-    console.log('clicked!!!!')
     const state = location.state as NavigationState
     login()
     navigate(state?.from ?? '/')
@@ -58,9 +57,6 @@ const Auth = (): JSX.Element => {
   }
 
   const validateControl = (value: string, validation: IValidation): boolean => {
-    if (validation == null) {
-      return true
-    }
     let isValid = true
     if (validation.required) {
       isValid = value.trim() !== '' && isValid

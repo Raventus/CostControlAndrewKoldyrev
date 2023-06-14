@@ -8,20 +8,24 @@ export interface IButtonProps {
   children: string
 }
 
-const Button = (props: IButtonProps): JSX.Element => {
+// 1. Функциональный компонент, 2. Деструктуризация props
+const Button = ({ type, disabled, children, onClick }: IButtonProps): JSX.Element => {
   console.log(classes)
   const cls = [
     classes.Button,
-    classes[props.type]
+    classes[type]
   ]
 
   return (
         <button
-            onClick={props.onClick}
+            onClick={onClick}
             className={cls.join(' ')}
-            disabled={props.disabled}
+            disabled={disabled}
         >
-            {props.children}
+            {
+              // 5. Children types
+            children
+            }
         </button>
   )
 }

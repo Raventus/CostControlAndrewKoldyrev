@@ -4,7 +4,7 @@ import { type CostItemType } from './CostList/Types/CostItemType'
 import { CostList } from './CostList/CostList'
 import Layout from './hoc/Layout/Layout'
 import { Routes, Route, HashRouter } from 'react-router-dom'
-import Categories from './Categories/Categories'
+import CategoriesContainer from './Categories/CategoriesContainer'
 
 const itemsArray: CostItemType[] = [
   {
@@ -47,7 +47,7 @@ root.render(
     <React.StrictMode>
       <Layout>
       <Routes >
-        <Route path='/categories' element={ <Categories categories={categories} />}/>
+        <Route path='/categories' element={ <CategoriesContainer categories={categories} items={itemsArray}/>}/>
         <Route path='/' element={ <CostList items={itemsArray} categories={categories}/>}/>
       </Routes >
       </Layout>

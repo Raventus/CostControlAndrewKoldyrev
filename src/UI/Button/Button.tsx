@@ -10,7 +10,6 @@ export interface IButtonProps {
 
 // 1. Функциональный компонент, 2. Деструктуризация props
 const Button = ({ type, disabled, children, onClick }: IButtonProps): JSX.Element => {
-  console.log(classes)
   const cls = [
     classes.Button,
     classes[type]

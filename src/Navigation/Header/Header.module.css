@@ -1,0 +1,7 @@
+.Header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: linear-gradient(90deg, #5041b2 0%, #7969e6 100%);
+    padding-top: 15px;
+}

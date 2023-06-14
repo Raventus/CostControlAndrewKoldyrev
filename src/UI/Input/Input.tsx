@@ -5,6 +5,10 @@ interface InputProps {
   type: string
   label: string
   value: string | number
+  valid: boolean
+  touched: boolean
+  errorMessage: string
+  shouldValidate: boolean
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -16,16 +20,30 @@ const Input = (props: InputProps): JSX.Element => {
   ]
   const htmlFor = `${inputType}- ${Math.random()}`
 
+  function isInvalid (props: InputProps): boolean {
+    return !props.valid && props.shouldValidate && props.touched
+  }
+
+  if (isInvalid(props)) {
+    cls.push(classes.invalid)
+  }
+
   return (
-        <div className={cls.join(' ')}>
-            <label htmlFor={ htmlFor }>{props.label}</label>
-            <input
-                type={inputType}
-                id={htmlFor}
-                value={props.value}
-                onChange={props.onChange}>
-                </input>
-        </div>
+    <div className={cls.join(' ')}>
+      <label htmlFor={htmlFor}>{props.label}</label>
+      <input
+        type={inputType}
+        id={htmlFor}
+        value={props.value}
+        onChange={props.onChange}>
+      </input>
+
+      {
+        isInvalid(props)
+          ? <span>{props.errorMessage ?? 'Введите верное значение'}</span>
+          : null
+      }
+    </div>
   )
 }
 

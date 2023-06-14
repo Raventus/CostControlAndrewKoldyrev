@@ -10,6 +10,7 @@
     justify-content: center;
     margin: 10;
     padding: 10;
+    max-height: 100px;
 }
 
 .Button:focus {

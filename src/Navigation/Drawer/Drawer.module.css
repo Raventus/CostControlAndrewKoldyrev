@@ -7,7 +7,7 @@
     max-width: 300px;
     padding: 20px 10 px;
     box-sizing: border-box;
-    background: #fff;
+    background: linear-gradient(270deg, #cef2fa 0%, #59bfef 100%);
     transform: translateX(0px);
     transition: transform .22s ease-in;
     z-index: 90;
@@ -29,10 +29,8 @@
 }
 
 .Drawwer ul li a {
-    color: #363d54;
     font-size: 30px;
     text-decoration: none;
-    background-color: #ffff;
     position: relative;
     padding: 0 20px 10px 20px;
     transition: opacity .3s;
@@ -40,4 +38,12 @@
 
 .Drawwer ul li a:hover, .active {
     opacity: .7;
+}
+
+.link{
+  color: #fff
+}
+
+.active {
+    color: blue
 }

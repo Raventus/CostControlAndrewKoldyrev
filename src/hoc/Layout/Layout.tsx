@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import classes from './Layout.module.css'
 import MenuToogle from '../../Navigation/MenuToogle/MenuToogle'
 import Drawer from '../../Navigation/Drawer/Drawer'
+import Header from '../../Navigation/Header/Header'
 
 export interface LayoutProps {
   children: string | JSX.Element
@@ -44,6 +45,7 @@ class Layout extends Component<LayoutProps, LayoutState> {
                 }
             />
            <main>
+                <Header />
                 { this.props.children }
             </main>
         </div>

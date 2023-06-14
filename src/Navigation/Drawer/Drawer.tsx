@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import classes from './Drawer.module.css'
 import Backdrop from '../../UI/Backdrop/Backdrop'
-import { NavLink } from 'react-router-dom'
+import { NavLink, type NavLinkProps } from 'react-router-dom'
+import cn from 'clsx'
 
 const links = [
   {
@@ -19,6 +20,8 @@ export interface IDrawerProps {
   onClose: () => void
 }
 
+export const getClassName: NavLinkProps['className'] = ({ isActive }) => cn(classes.link, isActive && classes.active)
+
 class Drawer extends Component<IDrawerProps> {
   clickHandler = (): void => {
     this.props.onClose()
@@ -29,6 +32,7 @@ class Drawer extends Component<IDrawerProps> {
       return (
                 <li key={index}>
                    <NavLink
+                   className={getClassName}
                     to={link.to}
                     onClick={this.clickHandler}>
                         {link.label}

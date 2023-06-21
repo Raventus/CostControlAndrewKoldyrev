@@ -1,6 +1,6 @@
 
 import { type AddCostItemAction, type DeleteCostItemAction } from '../actions/costItemActions'
-import { CATEGORIES_ADD, CATEGORIES_DELETE } from '../actions/actionTypes'
+import { COSTITEM_ADD, COSTITEM_DELETE } from '../actions/actionTypes'
 import { type CostItemType } from '../../CostList/Types/CostItemType'
 
 const initialState: CostItemType[] = [
@@ -34,12 +34,12 @@ type costItemAction = AddCostItemAction | DeleteCostItemAction
 
 export default function costItemReducer (state: CostItemType[] = initialState, action: costItemAction): CostItemType[] {
   switch (action.type) {
-    case CATEGORIES_ADD: {
+    case COSTITEM_ADD: {
       const newState: CostItemType[] = state.concat()
       newState.push((action as AddCostItemAction).costItem)
       return newState
     }
-    case CATEGORIES_DELETE: {
+    case COSTITEM_DELETE: {
       const newState: CostItemType[] = state.concat()
       newState.splice((action as DeleteCostItemAction).id, 1)
       return newState

@@ -110,7 +110,6 @@ export class CostItemAdd extends Component<ICostItemAddProps, ICostItemAddState>
       })
   }
 
-  // 6. Event switch
   onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>, controlName: string): void => {
     const formControls = { ...this.state.formControls }
     const control: IFormParams = { ...(this.state.formControls)[controlName as keyof IAddCostFormInputs] }

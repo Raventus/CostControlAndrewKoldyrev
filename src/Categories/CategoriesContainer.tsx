@@ -30,7 +30,6 @@ class CategoriesContainer extends React.PureComponent<ICategoriesProps, ICategor
   }
 
   SetCostsToCategories = (categories: string[], items: CostItemType[]): categoriesWithCosts[] => {
-    console.log()
     return categories.map((currentCategory, index) => {
       const category = currentCategory
       const costs = items.reduce((accumulator, currentValue) => {

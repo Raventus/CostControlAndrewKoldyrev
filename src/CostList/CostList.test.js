@@ -33,11 +33,11 @@ describe('CostList Test', () => {
   })
   test('CostList component contains', () => {
     render(<CostList/>)
-    expect(screen.getByText('Добавить')).toBeInTheDocument()
+    expect(screen.getByText('Добавить расход')).toBeInTheDocument()
   })
   test('CostList push add button - form is shown', () => {
     const costItemListProps = {
-      items: [
+      costItems: [
         {
           name: 'Яблоко',
           cost: 100,
@@ -51,10 +51,22 @@ describe('CostList Test', () => {
           store: 'Водолей'
         }
       ],
-      categories: ['Сантехника', 'Фрукты']
+      categories: ['Сантехника', 'Фрукты'],
+      showForm: true
     }
-    render(<CostList {...costItemListProps}/>)
-    fireEvent.click(screen.getByText('Добавить'))
+
+    const toogleForm = jest.fn(() => {
+      costItemListProps.showForm = true
+    })
+
+    const deleteCostItem = jest.fn(() => {
+    })
+
+    const addCostItem = jest.fn(() => {
+    })
+
+    render(<CostList {...costItemListProps} toogleForm = {toogleForm.bind(CostList)} deleteCostItem = {deleteCostItem.bind(CostList)} addCostItem={addCostItem.bind(CostList)}/>)
+    fireEvent.click(screen.getByText('Добавить расход'))
     expect(screen.getByText('Цена')).toBeInTheDocument()
   })
 })

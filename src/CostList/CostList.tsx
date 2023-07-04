@@ -2,85 +2,73 @@ import React, { Component } from 'react'
 import { type CostItemType } from './Types/CostItemType'
 import { CostItem } from './CostItem/CostItem'
 import { CostItemAdd } from './CostItemAdd/CostItemAdd'
-import deepEqual from 'fast-deep-equal'
 import Button from '../UI/Button/Button'
 import classes from './CostList.style.module.css'
+import { connect } from 'react-redux'
+import { addCostItemActionCreator, deleteCostItemActionCreator } from '../redux/actions/costItemActions'
+import { type Dispatch } from 'redux'
+import { toogleAddCostItemFormActionCreator } from '../redux/actions/uiActions'
+import { type storeValuesType } from '../redux/reducers/rootReducer'
 
 export interface ICostItemListProps {
-  items: CostItemType[]
+  costItems: CostItemType[]
   categories: string[]
+  showForm: boolean
 };
 
 export interface ICostItemListState {
   costItems: CostItemType[]
   showForm: boolean
+  categories: string []
 }
 
-export class CostList extends Component<ICostItemListProps, ICostItemListState> {
-  constructor (props: ICostItemListProps) {
-    super(props)
-    this.state = {
-      costItems: this.props.items,
-      showForm: false
-    }
-
-    this.addCostItem = this.addCostItem.bind(this)
-  }
-
-  handleClick = (e: MouseEvent): void => {
-    console.log({ x: e.clientX, y: e.clientY })
-  }
-
-  componentDidUpdate (prevProps: Readonly<ICostItemListProps>, prevState: Readonly<ICostItemListState>, snapshot?: any): void {
-    if (this.state.costItems.some(x => x.category === ''.trim() || x.store === ''.trim() || x.cost <= 0 || x.name === ''.trim())) {
-      const items = this.state.costItems.filter(x => x.category !== ''.trim() && x.store !== ''.trim() && x.cost > 0 && x.name !== ''.trim())
-      this.setState({
-        costItems: items
-      })
-    }
-  }
-
-  shouldComponentUpdate (nextProps: Readonly<ICostItemListProps>, nextState: Readonly<ICostItemListState>, nextContext: any): boolean {
-    return !deepEqual(this.state, nextState)
-  }
-
-  toogleForm = (): void => {
-    const showForm = !this.state.showForm
-    this.setState({ showForm })
-  }
-
-  addCostItem (newCostItem: CostItemType): void {
-    const costItems = [...this.state.costItems, newCostItem]
-    const showForm = false
-    this.setState({ costItems, showForm })
-  }
-
-  deleteCostItem (index: number): void {
-    const costItems = [...this.state.costItems]
-    costItems.splice(index, 1)
-    this.setState({ costItems })
-  }
-
+export class CostList extends Component<ICostItemListProps & DispatchProps, ICostItemListState> {
   render (): JSX.Element | null {
+    console.log('props123', this.props)
     return (
       <div className={classes.CostItemList}>
-        <Button onClick={ this.toogleForm } disabled={false} type='primary'>Добавить</Button>
+        <Button onClick={ this.props.toogleForm } disabled={false} type='primary'>Добавить расход</Button>
 
         {
-          // 4. Условный рендеринг
-          this.state.showForm &&
-          <CostItemAdd onAdd={ this.addCostItem } categories = {this.props.categories}/> }
+          this.props.showForm &&
+          <CostItemAdd onAdd={ this.props.addCostItem } categories = {this.props.categories}/>
+        }
+
         {
-          // 4. Условный рендеринг
-          this.state.costItems?.length > 0
-            ? this.state.costItems.map((itemCost, index) =>
+          this.props.costItems?.length > 0
+            ? this.props.costItems.map((itemCost, index) =>
             <CostItem
               item={itemCost}
               key={index}
-              onDeleted={this.deleteCostItem.bind(this, index)} />)
+              onDeleted={this.props.deleteCostItem.bind(this, index)} />)
             : 'Здесь пока нет элементов покупок'
         }
       </div>
     )
   }
 }
+
+function mapStateToProps (state: storeValuesType): ICostItemListState {
+  const props = {
+    costItems: state.costItems,
+    showForm: state.uiShow.showAddCostItemForm,
+    categories: state.categories
+  }
+  return props
+}
+
+interface DispatchProps {
+  addCostItem: typeof addCostItemActionCreator
+  deleteCostItem: typeof deleteCostItemActionCreator
+  toogleForm: typeof toogleAddCostItemFormActionCreator
+}
+
+function mapDispatchToProps (dispatch: Dispatch): DispatchProps {
+  return {
+    addCostItem: (item: CostItemType) => dispatch(addCostItemActionCreator(item)),
+    deleteCostItem: (index: number) => dispatch(deleteCostItemActionCreator(index)),
+    toogleForm: () => dispatch(toogleAddCostItemFormActionCreator())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CostList)

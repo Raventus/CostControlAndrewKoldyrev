@@ -1,7 +1,8 @@
 import { addCategoryActionCreator, deleteCategoryActionCreator } from './catrgoryActions'
 import { addCostItemActionCreator, deleteCostItemActionCreator } from './costItemActions'
-import { CATEGORIES_ADD, CATEGORIES_DELETE, COSTITEM_ADD, COSTITEM_DELETE } from './actionTypes'
+import { CATEGORIES_ADD, CATEGORIES_DELETE, COSTITEM_ADD, COSTITEM_DELETE, COSTITEM_TOOGLE_SHOW_ADD_FORM } from './actionTypes'
 import { type CostItemType } from '../../CostList/Types/CostItemType'
+import { toogleAddCostItemFormActionCreator } from './uiActions'
 
 describe('CategoryAction Test', () => {
   test('addCategoryActionCreator return valid object', () => {
@@ -55,5 +56,15 @@ describe('CostItemAction Test', () => {
     // Assert
     expect(result.type).toEqual(COSTITEM_DELETE)
     expect(result.id).toEqual(deleteId)
+  })
+})
+describe('UiActions Test', () => {
+  test('toogleAddCostItemForm return valid object', () => {
+    // Arrange
+    // Act
+    const result = toogleAddCostItemFormActionCreator()
+
+    // Assert
+    expect(result.type).toEqual(COSTITEM_TOOGLE_SHOW_ADD_FORM)
   })
 })

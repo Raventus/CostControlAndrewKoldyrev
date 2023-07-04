@@ -12,7 +12,8 @@
     "lint": "npx tsc --noEmit && npx eslint ./src --ext .js,.ts,.tsx",
     "lint:fix": "npm run lint -- --fix",
     "chromatic": "npx chromatic --project-token=1a0f3dfedac3",
-    "coverage-badge": "coverage-badger -r coverage/clover.xml -d coverage/"
+    "coverage-badge": "coverage-badger -r coverage/clover.xml -d coverage/",
+    "stryker": " stryker run --logLevel trace"
   },
   "repository": {
     "type": "git",
@@ -52,6 +53,8 @@
     "@storybook/react": "7.0.5",
     "@storybook/react-webpack5": "7.0.5",
     "@storybook/testing-library": "0.0.14-next.2",
+    "@stryker-mutator/core": "^7.1.0",
+    "@stryker-mutator/jest-runner": "^7.1.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@types/react": "^18.0.35",

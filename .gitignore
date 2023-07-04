@@ -13,3 +13,6 @@ yarn-error.log
 
 !/coverage/coverage.svg
 
+
+# stryker temp files
+.stryker-tmp

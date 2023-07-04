@@ -32,11 +32,9 @@ export const TokenProvider: FC<TokenProviderProps> = ({ children }) => {
     () => ({
       login: () => {
         setToken(Math.random().toString(16))
-        console.log(token)
       },
       logout: () => {
         setToken(null)
-        console.log(token)
       }
     }),
     []

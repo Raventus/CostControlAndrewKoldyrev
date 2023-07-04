@@ -1,13 +1,15 @@
-import { takeEvery } from '@redux-saga/core/effects'
+import { takeEvery, select } from '@redux-saga/core/effects'
 import { STORE_SAVE_STORE, STORE_GET_STORE } from '../redux/actions/actionTypes'
 
 export function * getWorkerSaga (): Generator {
-  console.log('store is extract')
+  const storeToGet = select((state) => state)
+  console.log(storeToGet)
   yield
 }
 
 export function * setWorkerSaga (): Generator {
-  console.log('store is saved')
+  const storeToSave = select((state) => state)
+  console.log(storeToSave)
   yield
 }
 

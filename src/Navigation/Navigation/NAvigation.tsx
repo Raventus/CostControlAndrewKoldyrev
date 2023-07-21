@@ -3,7 +3,7 @@ import { HashRouter, Route, Routes } from 'react-router-dom'
 import { ProtectedRoute } from '../ProtectedRoute/ProtectedRoute'
 import NotFound from '../NotFound/NotFound'
 import Auth from '../Auth/Auth'
-import { CostList } from '../../CostList/CostList'
+import CostList from '../../CostList/CostList'
 import CategoriesContainer from '../../Categories/CategoriesContainer'
 import { categories, itemsArray } from '../../Infrastructure/State/state'
 import Layout from '../../hoc/Layout/Layout'
@@ -13,7 +13,7 @@ const mainElement = (
         <Layout>
             <Routes>
                 <Route path='/categories' element={<CategoriesContainer categories={categories} items={itemsArray} />} />
-                <Route path='/' element={<CostList items={itemsArray} categories={categories} />} />
+                <Route path='/' element={<CostList />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </Layout>

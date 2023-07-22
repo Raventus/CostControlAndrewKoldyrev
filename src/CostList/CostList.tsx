@@ -9,6 +9,7 @@ import { addCostItemActionCreator, deleteCostItemActionCreator } from '../redux/
 import { type Dispatch } from 'redux'
 import { toogleAddCostItemFormActionCreator } from '../redux/actions/uiActions'
 import { type storeValuesType } from '../redux/reducers/rootReducer'
+import { MonthPicker } from '../MonthPicker/MonthPicker'
 
 export interface ICostItemListProps {
   costItems: CostItemType[]
@@ -24,11 +25,10 @@ export interface ICostItemListState {
 
 export class CostList extends Component<ICostItemListProps & DispatchProps, ICostItemListState> {
   render (): JSX.Element | null {
-    console.log('props123', this.props)
     return (
       <div className={classes.CostItemList}>
+        <MonthPicker />
         <Button onClick={ this.props.toogleForm } disabled={false} type='primary'>Добавить расход</Button>
-
         {
           this.props.showForm &&
           <CostItemAdd onAdd={ this.props.addCostItem } categories = {this.props.categories}/>

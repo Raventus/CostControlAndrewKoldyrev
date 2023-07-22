@@ -1,12 +1,8 @@
 import { type AddCategoryAction, type DeleteCategoryAction } from '../actions/catrgoryActions'
 import { CATEGORIES_ADD, CATEGORIES_DELETE } from '../actions/actionTypes'
+import { Categories } from '../state/state'
 
-const initialState: string[] = [
-  'Фрукты',
-  'Сантехника',
-  'Техника',
-  'Книга'
-]
+const initialState: string[] = Categories
 
 type categoryAction = AddCategoryAction | DeleteCategoryAction
 

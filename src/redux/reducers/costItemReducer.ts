@@ -2,33 +2,9 @@
 import { type AddCostItemAction, type DeleteCostItemAction } from '../actions/costItemActions'
 import { COSTITEM_ADD, COSTITEM_DELETE } from '../actions/actionTypes'
 import { type CostItemType } from '../../CostList/Types/CostItemType'
+import { CostItems } from '../state/state'
 
-const initialState: CostItemType[] = [
-  {
-    name: 'Яблоко',
-    cost: 100,
-    category: 'Фрукты',
-    store: 'Пятёрочка'
-  },
-  {
-    name: 'Ванна',
-    cost: 100000,
-    category: 'Сантехника',
-    store: 'Водолей'
-  },
-  {
-    name: 'Монитор',
-    cost: 10000,
-    category: 'Техника',
-    store: 'DNS'
-  },
-  {
-    name: 'Гарри поттер и Узник Азкабана',
-    cost: 1000,
-    category: 'Книга',
-    store: 'Книжный мир'
-  }
-]
+const initialState: CostItemType[] = CostItems
 
 type costItemAction = AddCostItemAction | DeleteCostItemAction
 

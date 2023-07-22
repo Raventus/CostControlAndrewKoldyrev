@@ -3,6 +3,7 @@ import { type AddCostItemAction, type DeleteCostItemAction } from '../actions/co
 import { COSTITEM_ADD, COSTITEM_DELETE } from '../actions/actionTypes'
 import { type CostItemType } from '../../CostList/Types/CostItemType'
 import { CostItems } from '../state/state'
+import moment from 'moment'
 
 const initialState: CostItemType[] = CostItems
 
@@ -12,7 +13,9 @@ export default function costItemReducer (state: CostItemType[] = initialState, a
   switch (action.type) {
     case COSTITEM_ADD: {
       const newState: CostItemType[] = state.concat()
-      newState.push((action as AddCostItemAction).costItem)
+      const newCostItem = (action as AddCostItemAction).costItem
+      newCostItem.date = moment().format('YYYY-MM-DD')
+      newState.push(newCostItem)
       return newState
     }
     case COSTITEM_DELETE: {

@@ -6,7 +6,6 @@ import Button from '../../UI/Button/Button'
 export interface ICostItemLProps {
   item: CostItemType
   onDeleted: () => void
-  key: number
 }
 
 export interface ICostItemState {

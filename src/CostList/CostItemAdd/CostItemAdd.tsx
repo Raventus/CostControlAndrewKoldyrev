@@ -76,7 +76,8 @@ export class CostItemAdd extends Component<ICostItemAddProps, ICostItemAddState>
       name: '',
       cost: 0,
       category: this.props.categories[0],
-      store: ''
+      store: '',
+      date: '2023-07-22'
     },
     categories: [...this.props.categories]
   }

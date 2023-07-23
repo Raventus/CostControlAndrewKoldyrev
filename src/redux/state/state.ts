@@ -1,4 +1,5 @@
 import { type CostItemType } from '../../CostList/Types/CostItemType'
+import { type SalaryByMonth } from '../../CostList/Types/SalaryByMonth'
 
 export const CostItems: CostItemType[] = [
   {
@@ -32,6 +33,14 @@ export const CostItems: CostItemType[] = [
     store: 'Книжный мир',
     date: '2023-07-23',
     id: 11
+  },
+  {
+    name: 'Гарри поттер и Тайная комната',
+    cost: 1000,
+    category: 'Книга',
+    store: 'Книжный мир',
+    date: '2023-06-30',
+    id: 13
   }
 ]
 
@@ -43,3 +52,14 @@ export const Categories: string[] = [
 ]
 
 export const MonthToCalculate = '2023-07'
+
+export const Salary: SalaryByMonth[] = [
+  {
+    salary: 200000,
+    month: '2023-07'
+  },
+  {
+    salary: 190000,
+    month: '2023-06'
+  }
+]

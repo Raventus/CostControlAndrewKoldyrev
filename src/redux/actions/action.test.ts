@@ -36,7 +36,9 @@ describe('CostItemAction Test', () => {
       name: 'Яблоко',
       cost: 100,
       category: 'Фрукты',
-      store: 'Пятёрочка'
+      store: 'Пятёрочка',
+      date: '2023-08',
+      id: 1
     }
 
     // Act

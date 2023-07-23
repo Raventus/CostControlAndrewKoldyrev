@@ -11,13 +11,14 @@ export const Default = (): JSX.Element => {
     name: 'storybook',
     cost: 10000,
     category: 'Category',
-    store: 'Store'
+    store: 'Store',
+    date: '2023-08',
+    id: 1
   }
 
   const onDeleted: () => void = () => {}
-  const key: number = 1
 
-  return <CostItem item={costItemExample} key = { key } onDeleted = {onDeleted} />
+  return <CostItem item={costItemExample} onDeleted = {onDeleted} />
 }
 
 export const WithoutValues = (): JSX.Element => {
@@ -25,11 +26,12 @@ export const WithoutValues = (): JSX.Element => {
     name: '',
     cost: 0,
     category: '',
-    store: ''
+    store: '',
+    date: '2023-08',
+    id: 1
   }
 
   const onDeleted: () => void = () => {}
-  const key: number = 1
 
-  return <CostItem item={costItemExample} key = { key } onDeleted = {onDeleted} />
+  return <CostItem item={costItemExample} onDeleted = {onDeleted} />
 }

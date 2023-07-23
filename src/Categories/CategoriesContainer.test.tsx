@@ -11,19 +11,25 @@ describe('CategoriesContainer Test', () => {
         name: 'Яблоко',
         cost: 100,
         category: 'Фрукты',
-        store: 'Пятёрочка'
+        store: 'Пятёрочка',
+        date: '2023-08',
+        id: 1
       },
       {
         name: 'Ванна',
         cost: 100000,
         category: 'Сантехника',
-        store: 'Водолей'
+        store: 'Водолей',
+        date: '2023-08',
+        id: 2
       },
       {
         name: 'Унитаз',
         cost: 1000,
         category: 'Сантехника',
-        store: 'Водолей'
+        store: 'Водолей',
+        date: '2023-08',
+        id: 3
       }
     ]
 
@@ -41,19 +47,25 @@ describe('CategoriesContainer Test', () => {
         name: 'Яблоко',
         cost: 100,
         category: 'Фрукты',
-        store: 'Пятёрочка'
+        store: 'Пятёрочка',
+        date: '2023-08',
+        id: 1
       },
       {
         name: 'Ванна',
         cost: 100000,
         category: 'Сантехника',
-        store: 'Водолей'
+        store: 'Водолей',
+        date: '2023-08',
+        id: 2
       },
       {
         name: 'Унитаз',
         cost: 1000,
         category: 'Сантехника',
-        store: 'Водолей'
+        store: 'Водолей',
+        date: '2023-08',
+        id: 3
       }
     ]
 

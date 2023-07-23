@@ -1,8 +1,8 @@
 
-import { type AddCostItemAction, type DeleteCostItemAction } from '../actions/costItemActions'
-import { COSTITEM_ADD, COSTITEM_DELETE } from '../actions/actionTypes'
-import { type CostItemType } from '../../CostList/Types/CostItemType'
-import { CostItems } from '../state/state'
+import { type AddCostItemAction, type DeleteCostItemAction } from '../../actions/costItemActions'
+import { COSTITEM_ADD, COSTITEM_DELETE } from '../../actions/actionTypes'
+import { type CostItemType } from '../../../CostList/Types/CostItemType'
+import { CostItems } from '../../state/state'
 import moment from 'moment'
 
 const initialState: CostItemType[] = CostItems
@@ -14,13 +14,15 @@ export default function costItemReducer (state: CostItemType[] = initialState, a
     case COSTITEM_ADD: {
       const newState: CostItemType[] = state.concat()
       const newCostItem = (action as AddCostItemAction).costItem
+      newCostItem.id = Math.max(...newState.map(o => o.id)) + 1
       newCostItem.date = moment().format('YYYY-MM-DD')
       newState.push(newCostItem)
       return newState
     }
     case COSTITEM_DELETE: {
       const newState: CostItemType[] = state.concat()
-      newState.splice((action as DeleteCostItemAction).id, 1)
+      const deletingItem = newState.findIndex(x => x.id === (action as DeleteCostItemAction).id)
+      newState.splice(deletingItem, 1)
       return newState
     }
     default:

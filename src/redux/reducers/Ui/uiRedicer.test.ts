@@ -1,5 +1,5 @@
 import { type AnyAction } from 'redux'
-import { COSTITEM_TOOGLE_SHOW_ADD_FORM } from '../actions/actionTypes'
+import { COSTITEM_TOOGLE_SHOW_ADD_FORM } from '../../actions/actionTypes'
 import uiShowReducer, { type uiShowFormType } from './uiReducer'
 
 describe('uiShowReducer Test', () => {

@@ -2,6 +2,8 @@ import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { CostList } from './CostList'
 import '@testing-library/jest-dom'
+import { Provider } from 'react-redux'
+import store from '../redux/store/store'
 
 global.fetch = jest.fn(() =>
   Promise.resolve({
@@ -12,27 +14,34 @@ global.fetch = jest.fn(() =>
 describe('CostList Test', () => {
   test('render CostList component', () => {
     const costItemListProps = {
-      items: [
+      costItems: [
         {
           name: 'Яблоко',
           cost: 100,
           category: 'Фрукты',
-          store: 'Пятёрочка'
+          store: 'Пятёрочка',
+          date: '2023-07',
+          id: 1
         },
         {
           name: 'Ванна',
           cost: 100000,
           category: 'Сантехника',
-          store: 'Водолей'
+          store: 'Водолей',
+          date: '2023-07',
+          id: 2
         }
       ],
-      categories: ['Сантехника', 'Фрукты']
+      categories: ['Сантехника', 'Фрукты'],
+      monthToCalculate: '2023-07',
+      deleteCostItem: () => {}
     }
-    render(<CostList {...costItemListProps}/>)
+    render(<Provider store={store}><CostList {...costItemListProps}/></Provider>)
     screen.debug()
   })
   test('CostList component contains', () => {
-    render(<CostList/>)
+    const costItems = []
+    render(<Provider store={store}><CostList costItems={costItems}/></Provider>)
     expect(screen.getByText('Добавить расход')).toBeInTheDocument()
   })
   test('CostList push add button - form is shown', () => {
@@ -42,17 +51,22 @@ describe('CostList Test', () => {
           name: 'Яблоко',
           cost: 100,
           category: 'Фрукты',
-          store: 'Пятёрочка'
+          store: 'Пятёрочка',
+          date: '2023-07',
+          id: 1
         },
         {
           name: 'Ванна',
           cost: 100000,
           category: 'Сантехника',
-          store: 'Водолей'
+          store: 'Водолей',
+          date: '2023-07',
+          id: 2
         }
       ],
       categories: ['Сантехника', 'Фрукты'],
-      showForm: true
+      showForm: true,
+      monthToCalculate: '2023-07'
     }
 
     const toogleForm = jest.fn(() => {
@@ -65,7 +79,9 @@ describe('CostList Test', () => {
     const addCostItem = jest.fn(() => {
     })
 
-    render(<CostList {...costItemListProps} toogleForm = {toogleForm.bind(CostList)} deleteCostItem = {deleteCostItem.bind(CostList)} addCostItem={addCostItem.bind(CostList)}/>)
+    render(<Provider store={store}>
+      <CostList {...costItemListProps} toogleForm = {toogleForm.bind(CostList)} deleteCostItem = {deleteCostItem.bind(CostList)} addCostItem={addCostItem.bind(CostList)}/>
+      </Provider>)
     fireEvent.click(screen.getByText('Добавить расход'))
     expect(screen.getByText('Цена')).toBeInTheDocument()
   })

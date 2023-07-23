@@ -1,6 +1,6 @@
 import categoryReducer from './categoryReducer'
-import { CATEGORIES_ADD, CATEGORIES_DELETE } from '../actions/actionTypes'
-import { type AddCategoryAction, type DeleteCategoryAction } from '../actions/catrgoryActions'
+import { CATEGORIES_ADD, CATEGORIES_DELETE } from '../../actions/actionTypes'
+import { type AddCategoryAction, type DeleteCategoryAction } from '../../actions/catrgoryActions'
 
 describe('categoryReducer Test', () => {
   test('Send CATEGORIES_ADD return state with new Item', () => {

@@ -5,15 +5,15 @@ import NotFound from '../NotFound/NotFound'
 import Auth from '../Auth/Auth'
 import CostList from '../../CostList/CostList'
 import CategoriesContainer from '../../Categories/CategoriesContainer'
-import { categories, itemsArray } from '../../Infrastructure/State/state'
 import Layout from '../../hoc/Layout/Layout'
+import { Categories, CostItems } from '../../redux/state/state'
 
 const mainElement = (
     <ProtectedRoute>
         <Layout>
             <Routes>
-                <Route path='/categories' element={<CategoriesContainer categories={categories} items={itemsArray} />} />
-                <Route path='/' element={<CostList />} />
+                <Route path='/categories' element={<CategoriesContainer categories={Categories} items={CostItems} />} />
+                <Route path='/' element={<CostList monthToCalculate={''} />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </Layout>

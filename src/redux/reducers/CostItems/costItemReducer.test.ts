@@ -1,7 +1,7 @@
 import costItemReducer from './costItemReducer'
-import { COSTITEM_ADD, COSTITEM_DELETE } from '../actions/actionTypes'
-import { type AddCostItemAction, type DeleteCostItemAction } from '../actions/costItemActions'
-import { type CostItemType } from '../../CostList/Types/CostItemType'
+import { COSTITEM_ADD, COSTITEM_DELETE } from '../../actions/actionTypes'
+import { type AddCostItemAction, type DeleteCostItemAction } from '../../actions/costItemActions'
+import { type CostItemType } from '../../../CostList/Types/CostItemType'
 
 describe('categoryReducer Test', () => {
   test('Send CATEGORIES_ADD return state with new Item', () => {
@@ -12,7 +12,9 @@ describe('categoryReducer Test', () => {
         name: 'Яблоко',
         cost: 100,
         category: 'Фрукты',
-        store: 'Пятёрочка'
+        store: 'Пятёрочка',
+        date: '2023-07',
+        id: 1
       }
     }
     const initialState: CostItemType[] = [
@@ -20,13 +22,17 @@ describe('categoryReducer Test', () => {
         name: 'Ванна',
         cost: 100000,
         category: 'Сантехника',
-        store: 'Водолей'
+        store: 'Водолей',
+        date: '2023-07',
+        id: 2
       },
       {
         name: 'Унитаз',
         cost: 1000,
         category: 'Сантехника',
-        store: 'Водолей'
+        store: 'Водолей',
+        date: '2023-07',
+        id: 3
       }
     ]
 
@@ -43,25 +49,31 @@ describe('categoryReducer Test', () => {
         name: 'Яблоко',
         cost: 100,
         category: 'Фрукты',
-        store: 'Пятёрочка'
+        store: 'Пятёрочка',
+        date: '2023-07',
+        id: 1
       },
       {
         name: 'Ванна',
         cost: 100000,
         category: 'Сантехника',
-        store: 'Водолей'
+        store: 'Водолей',
+        date: '2023-07',
+        id: 2
       },
       {
         name: 'Унитаз',
         cost: 1000,
         category: 'Сантехника',
-        store: 'Водолей'
+        store: 'Водолей',
+        date: '2023-07',
+        id: 3
       }
     ]
 
     const deleteCostItem: DeleteCostItemAction = {
       type: COSTITEM_DELETE,
-      id: 1
+      id: 2
     }
 
     // Act
@@ -76,19 +88,25 @@ describe('categoryReducer Test', () => {
         name: 'Яблоко',
         cost: 100,
         category: 'Фрукты',
-        store: 'Пятёрочка'
+        store: 'Пятёрочка',
+        date: '2023-07',
+        id: 1
       },
       {
         name: 'Ванна',
         cost: 100000,
         category: 'Сантехника',
-        store: 'Водолей'
+        store: 'Водолей',
+        date: '2023-07',
+        id: 2
       },
       {
         name: 'Унитаз',
         cost: 1000,
         category: 'Сантехника',
-        store: 'Водолей'
+        store: 'Водолей',
+        date: '2023-07',
+        id: 3
       }
     ]
 

@@ -4,7 +4,7 @@ import { type AnyAction } from 'redux'
 
 const initialState: SalaryByMonth[] = Salary
 
-export default function categoryReducer (state: SalaryByMonth[] = initialState, action: AnyAction): SalaryByMonth[] {
+export default function salaryReducer (state: SalaryByMonth[] = initialState, action: AnyAction): SalaryByMonth[] {
   switch (action.type) {
     default:
       return state

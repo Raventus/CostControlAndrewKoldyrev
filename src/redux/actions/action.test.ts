@@ -1,8 +1,9 @@
 import { addCategoryActionCreator, deleteCategoryActionCreator } from './catrgoryActions'
 import { addCostItemActionCreator, deleteCostItemActionCreator } from './costItemActions'
-import { CATEGORIES_ADD, CATEGORIES_DELETE, COSTITEM_ADD, COSTITEM_DELETE, COSTITEM_TOOGLE_SHOW_ADD_FORM } from './actionTypes'
+import { CATEGORIES_ADD, CATEGORIES_DELETE, COSTITEM_ADD, COSTITEM_DELETE, COSTITEM_TOOGLE_SHOW_ADD_FORM, DATETIME_CHANGE_MONTH_TO_CALCULATE } from './actionTypes'
 import { type CostItemType } from '../../CostList/Types/CostItemType'
 import { toogleAddCostItemFormActionCreator } from './uiActions'
+import { changeMonthToCalculate } from './dateTimeActions'
 
 describe('CategoryAction Test', () => {
   test('addCategoryActionCreator return valid object', () => {
@@ -68,5 +69,17 @@ describe('UiActions Test', () => {
 
     // Assert
     expect(result.type).toEqual(COSTITEM_TOOGLE_SHOW_ADD_FORM)
+  })
+})
+describe('DateTimeActions Test', () => {
+  test('DateTimeActions return valid object', () => {
+    // Arrange
+    const newMonth = '2023-08'
+    // Act
+    const result = changeMonthToCalculate(newMonth)
+
+    // Assert
+    expect(result.type).toEqual(DATETIME_CHANGE_MONTH_TO_CALCULATE)
+    expect(result.newMonthToCalculate).toEqual(newMonth)
   })
 })

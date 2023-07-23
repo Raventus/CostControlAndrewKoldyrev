@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import categoryReducer from './categoryReducer'
+import categoryReducer from './Category/categoryReducer'
 import costItemReducer from './CostItems/costItemReducer'
 import storeReducer from './Store/storeReducer'
-import uiShowReducer, { type uiShowFormType } from './uiReducer'
+import uiShowReducer, { type uiShowFormType } from './Ui/uiReducer'
 import { type CostItemType } from '../../CostList/Types/CostItemType'
-import DateTimeReducer from './DateTimeReducer'
+import DateTimeReducer from './DateTime/DateTimeReducer'
 import { type SalaryByMonth } from '../../CostList/Types/SalaryByMonth'
 import SalaryReducer from './Salary/SalaryReducer'
 

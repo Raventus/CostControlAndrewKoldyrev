@@ -1,6 +1,6 @@
-import { type AddCategoryAction, type DeleteCategoryAction } from '../actions/catrgoryActions'
-import { CATEGORIES_ADD, CATEGORIES_DELETE } from '../actions/actionTypes'
-import { Categories } from '../state/state'
+import { type AddCategoryAction, type DeleteCategoryAction } from '../../actions/catrgoryActions'
+import { CATEGORIES_ADD, CATEGORIES_DELETE } from '../../actions/actionTypes'
+import { Categories } from '../../state/state'
 
 const initialState: string[] = Categories
 

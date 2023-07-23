@@ -73,7 +73,7 @@ describe('categoryReducer Test', () => {
 
     const deleteCostItem: DeleteCostItemAction = {
       type: COSTITEM_DELETE,
-      id: 1
+      id: 2
     }
 
     // Act

@@ -1,11 +1,17 @@
 import React from 'react'
 import classes from './CategoriesContainer.module.css'
-import { type CostItemType } from '../CostList/Types/CostItemType'
+import { type CostItemType } from '../Infrastructure/Types/CostItemType'
 import CategoriesList from './CateforiesList/CategoriesList'
 import { withBoxStyle } from '../hoc/withBoxStyle/withBoxStyle'
+import { type CategoryType } from '../Infrastructure/Types/CategoryType'
+import { type storeValuesType } from '../redux/reducers/rootReducer'
+import { connect } from 'react-redux'
+import { addCategoryActionCreator } from '../redux/actions/catrgoryActions'
+import { type Dispatch } from 'redux'
+import { CategoriesAdd } from './CategoriesAdd/CategoriesAdd'
 
 export interface ICategoriesProps {
-  categories: string[]
+  categories: CategoryType[]
   items: CostItemType[]
 }
 
@@ -18,17 +24,11 @@ interface categoriesWithCosts {
   costs: number
 }
 
-// Container component
-class CategoriesContainer extends React.PureComponent<ICategoriesProps, ICategoriesContainerState> {
-  constructor (props: ICategoriesProps) {
-    super(props)
+export interface ICostItemListProps {
+  categories: CategoryType[]
+};
 
-    this.state =
-    {
-      categoriesWithCosts: this.SetCostsToCategories(this.props.categories, this.props.items)
-    }
-  }
-
+export class CategoriesContainer extends React.Component<ICategoriesProps & DispatchProps, ICategoriesContainerState> {
   SetCostsToCategories = (categories: string[], items: CostItemType[]): categoriesWithCosts[] => {
     return categories.map((currentCategory, index) => {
       const category = currentCategory
@@ -46,20 +46,40 @@ class CategoriesContainer extends React.PureComponent<ICategoriesProps, ICategor
   }
 
   render (): JSX.Element {
+    const categoriesWithCosts = this.SetCostsToCategories(this.props.categories.map(x => x.name), this.props.items)
+
     return (
       <div className={classes.Categories}>
-        <div>Категории</div>
-        <ol>
-          {
-            this.state.categoriesWithCosts.map((categoryWithCosts: categoriesWithCosts, index: number) => {
-              const WithBoxStyleHoc = withBoxStyle(CategoriesList)
-              return <WithBoxStyleHoc key = {index} category={ categoryWithCosts.category} costs={categoryWithCosts.costs}/>
-            })
+        <div className={classes.CategoriesHeader}>Категории</div>
+        <CategoriesAdd/>
+        {
+          categoriesWithCosts.map((categoryWithCosts: categoriesWithCosts, index: number) => {
+            const WithBoxStyleHoc = withBoxStyle(CategoriesList)
+            return <WithBoxStyleHoc key={index} category={categoryWithCosts.category} costs={categoryWithCosts.costs} />
+          })
         }
-        </ol>
       </div>
     )
   }
 }
 
-export default CategoriesContainer
+function mapStateToProps (state: storeValuesType): ICategoriesProps {
+  return {
+    categories: state.categories,
+    items: state.costItems
+  }
+}
+
+interface DispatchProps {
+  addCategory: typeof addCategoryActionCreator
+}
+
+function mapDispatchToProps (dispatch: Dispatch): DispatchProps {
+  return {
+    addCategory: (item: string) => {
+      return dispatch(addCategoryActionCreator(item))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriesContainer)

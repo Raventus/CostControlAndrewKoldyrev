@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
-import { type CostItemType } from '../Types/CostItemType'
+import { type CostItemType } from '../../Infrastructure/Types/CostItemType'
 import Button from '../../UI/Button/Button'
 import Input from '../../UI/Input/Input'
 import Select from '../../UI/Select/Select'
+import { type CategoryType } from '../../Infrastructure/Types/CategoryType'
 
 export interface ICostItemAddProps {
   onAdd: (item: CostItemType) => void
-  categories: string[]
+  categories: CategoryType[]
 };
 
 export interface ICostItemAddState {
   costItem: CostItemType
   formControls: IAddCostFormInputs
-  categories: string[]
+  categories: CategoryType[]
+  enabledButton: boolean
 };
 
 interface IFormParams {
@@ -21,12 +23,13 @@ interface IFormParams {
   label: string
   errorMessage: string
   valid: boolean
-  touched: false
+  touched: boolean
   validation: validationType
 }
 
 interface validationType {
   required: boolean
+  isDigit: boolean
 }
 
 interface IAddCostFormInputs {
@@ -46,7 +49,8 @@ export class CostItemAdd extends Component<ICostItemAddProps, ICostItemAddState>
         valid: false,
         touched: false,
         validation: {
-          required: false
+          required: true,
+          isDigit: false
         }
       },
       store: {
@@ -57,7 +61,8 @@ export class CostItemAdd extends Component<ICostItemAddProps, ICostItemAddState>
         valid: false,
         touched: false,
         validation: {
-          required: false
+          required: true,
+          isDigit: false
         }
       },
       cost: {
@@ -68,19 +73,21 @@ export class CostItemAdd extends Component<ICostItemAddProps, ICostItemAddState>
         valid: false,
         touched: false,
         validation: {
-          required: false
+          required: true,
+          isDigit: true
         }
       }
     },
     costItem: {
       name: '',
       cost: 0,
-      category: this.props.categories[0],
+      category: this.props.categories[0].name,
       store: '',
       date: '2023-07-22',
       id: 1
     },
-    categories: [...this.props.categories]
+    categories: [...this.props.categories],
+    enabledButton: false
   }
 
   onCostItemAdd = (): void => {
@@ -100,7 +107,7 @@ export class CostItemAdd extends Component<ICostItemAddProps, ICostItemAddState>
             type={control.type}
             value={control.value}
             label={control.label}
-            shouldValidate={false}
+            shouldValidate={true}
             valid={control.valid}
             touched={control.touched}
             errorMessage={control.errorMessage}
@@ -112,16 +119,33 @@ export class CostItemAdd extends Component<ICostItemAddProps, ICostItemAddState>
       })
   }
 
+  validateControl = (value: string, validation: validationType): boolean => {
+    let isValid = true
+    if (validation.required) {
+      isValid = value.trim() !== '' && isValid
+    }
+    if (validation.isDigit) {
+      isValid = isValid && /^\d+$/.test(value)
+    }
+    return isValid
+  }
+
   onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>, controlName: string): void => {
     const formControls = { ...this.state.formControls }
     const control: IFormParams = { ...(this.state.formControls)[controlName as keyof IAddCostFormInputs] }
 
-    control.value = event.target.value;
+    control.value = event.target.value
+    control.touched = true
+    control.valid = this.validateControl(control.value, control.validation);
 
     (formControls as any)[controlName] = control
 
+    const enabledButton = formControls.cost.valid && formControls.name.valid && formControls.store.valid &&
+    formControls.cost.touched && formControls.name.touched && formControls.store.touched
+
     this.setState({
-      formControls
+      formControls,
+      enabledButton
     })
   }
 
@@ -138,8 +162,10 @@ export class CostItemAdd extends Component<ICostItemAddProps, ICostItemAddState>
       <div>
         <form>
           {this.renderInputs()}
-          <Select label='Категория' value={this.state.costItem.category} onChange={this.onSelectHandler} options={this.state.categories}></Select>
-          <Button onClick={this.onCostItemAdd} type='success' disabled={false}>Добавить</Button>
+          <Select label='Категория' value={this.state.costItem.category} onChange={this.onSelectHandler} options={this.state.categories.map(x => x.name)}></Select>
+          <Button onClick={this.onCostItemAdd} type='success' disabled={
+            !this.state.enabledButton
+            }>Добавить</Button>
         </form >
       </div >
     )

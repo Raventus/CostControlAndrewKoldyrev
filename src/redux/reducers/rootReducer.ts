@@ -3,13 +3,14 @@ import categoryReducer from './Category/categoryReducer'
 import costItemReducer from './CostItems/costItemReducer'
 import storeReducer from './Store/storeReducer'
 import uiShowReducer, { type uiShowFormType } from './Ui/uiReducer'
-import { type CostItemType } from '../../CostList/Types/CostItemType'
+import { type CostItemType } from '../../Infrastructure/Types/CostItemType'
 import DateTimeReducer from './DateTime/DateTimeReducer'
-import { type SalaryByMonth } from '../../CostList/Types/SalaryByMonth'
+import { type SalaryByMonth } from '../../Infrastructure/Types/SalaryByMonth'
 import SalaryReducer from './Salary/SalaryReducer'
+import { type CategoryType } from '../../Infrastructure/Types/CategoryType'
 
 export interface storeValuesType {
-  categories: string[]
+  categories: CategoryType[]
   costItems: CostItemType[]
   uiShow: uiShowFormType
   monthToCalculate: string

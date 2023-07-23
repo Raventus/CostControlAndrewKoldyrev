@@ -1,5 +1,5 @@
 import salaryReducer from './SalaryReducer'
-import { type SalaryByMonth } from '../../../CostList/Types/SalaryByMonth'
+import { type SalaryByMonth } from '../../../Infrastructure/Types/SalaryByMonth'
 import { type AnyAction } from 'redux'
 
 describe('salaryReducer Test', () => {

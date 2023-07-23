@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { type CostItemType } from '..//Types/CostItemType'
+import { type CostItemType } from '../../Infrastructure/Types/CostItemType'
 import classes from './CostItem.module.css'
 import Button from '../../UI/Button/Button'
 

@@ -12,7 +12,7 @@ const Select = (props: ISelectProps): JSX.Element => {
   const htmlFor = `${props.label}-${Math.random()}`
   return (
         <div className={classes.Select}>
-            <label htmlFor={htmlFor}>{props.label}</label>
+            <label htmlFor={htmlFor} className={classes.LabelText}>{props.label}</label>
             <select id={htmlFor}
             value={props.value}
             data-testid = 'select'

@@ -1,4 +1,4 @@
-import { type CostItemType } from '../../../CostList/Types/CostItemType'
+import { type CostItemType } from '../../../Infrastructure/Types/CostItemType'
 import { STORE_GET_STORE, STORE_SAVE_STORE } from '../../actions/actionTypes'
 import { type StoreAction } from '../../actions/storeActions'
 import { CostItems } from '../../state/state'

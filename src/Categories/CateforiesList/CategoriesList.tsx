@@ -7,9 +7,9 @@ export interface ICategoriesListProps {
 
 const CategoriesList = ({ category, costs }: ICategoriesListProps): JSX.Element => {
   return (
-    <li>
+    <div>
         {category} : {costs}
-    </li>
+    </div>
 
   )
 }

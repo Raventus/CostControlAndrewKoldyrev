@@ -15,7 +15,6 @@ interface IInputWithValidation {
   valid: boolean
   touched: boolean
   validation: IValidation
-
 }
 
 interface IValidation {

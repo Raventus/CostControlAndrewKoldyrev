@@ -1,5 +1,6 @@
-import { type CostItemType } from '../../CostList/Types/CostItemType'
-import { type SalaryByMonth } from '../../CostList/Types/SalaryByMonth'
+import { type CategoryType } from '../../Infrastructure/Types/CategoryType'
+import { type CostItemType } from '../../Infrastructure/Types/CostItemType'
+import { type SalaryByMonth } from '../../Infrastructure/Types/SalaryByMonth'
 
 export const CostItems: CostItemType[] = [
   {
@@ -44,11 +45,23 @@ export const CostItems: CostItemType[] = [
   }
 ]
 
-export const Categories: string[] = [
-  'Фрукты',
-  'Сантехника',
-  'Техника',
-  'Книга'
+export const Categories: CategoryType[] = [
+  {
+    name: 'Фрукты',
+    id: 1
+  },
+  {
+    name: 'Сантехника',
+    id: 2
+  },
+  {
+    name: 'Техника',
+    id: 3
+  },
+  {
+    name: 'Книга',
+    id: 4
+  }
 ]
 
 export const MonthToCalculate = '2023-07'

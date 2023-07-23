@@ -1,7 +1,7 @@
 
 import { type AddCostItemAction, type DeleteCostItemAction } from '../../actions/costItemActions'
 import { COSTITEM_ADD, COSTITEM_DELETE } from '../../actions/actionTypes'
-import { type CostItemType } from '../../../CostList/Types/CostItemType'
+import { type CostItemType } from '../../../Infrastructure/Types/CostItemType'
 import { CostItems } from '../../state/state'
 import moment from 'moment'
 

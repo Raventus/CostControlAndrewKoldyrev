@@ -1,7 +1,7 @@
 
 import { DATETIME_CHANGE_MONTH_TO_CALCULATE } from '../../actions/actionTypes'
+import { type AddMonthToCalculateItemAction } from '../../actions/DateTimeActions'
 import { MonthToCalculate } from '../../state/state'
-import { type AddMonthToCalculateItemAction } from '../../actions/dateTimeActions'
 
 const initialState: string = MonthToCalculate
 

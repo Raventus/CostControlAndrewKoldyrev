@@ -20,3 +20,8 @@
     transition: all 300ms ease-in-out;
 
 }
+
+.LabelText {
+    color: white;
+    font-size: 30px;
+}

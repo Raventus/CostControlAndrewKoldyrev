@@ -6,6 +6,8 @@ import { type CostItemType } from '../Infrastructure/Types/CostItemType'
 import { type CategoryType } from '../Infrastructure/Types/CategoryType'
 import { type AddCategoryAction } from '../redux/actions/catrgoryActions'
 import { CATEGORIES_ADD } from '../redux/actions/actionTypes'
+import { Provider } from 'react-redux'
+import store from '../redux/store/store'
 
 describe('CategoriesContainer Test', () => {
   test('render CostList component', () => {
@@ -54,7 +56,8 @@ describe('CategoriesContainer Test', () => {
       }
     }
 
-    render(<CategoriesContainer items = {itemsArray} categories = {categories} addCategory={addCategory}/>)
+    render(<Provider store={store}><CategoriesContainer items = {itemsArray} categories = {categories} addCategory={addCategory}/>
+    </Provider>)
     screen.debug()
   })
   test('CategoriesContainer component contains', () => {
@@ -102,7 +105,7 @@ describe('CategoriesContainer Test', () => {
       }
     }
 
-    render(<CategoriesContainer items = {itemsArray} categories = {categories} addCategory = {addCategory}/>)
+    render(<Provider store={store}><CategoriesContainer items = {itemsArray} categories = {categories} addCategory = {addCategory}/></Provider>)
 
     expect(screen.getByText('Фрукты : 100')).toBeInTheDocument()
   })

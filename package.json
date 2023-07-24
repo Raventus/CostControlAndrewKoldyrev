@@ -44,6 +44,7 @@
     "redux": "^4.2.1",
     "redux-saga": "^1.2.3",
     "redux-thunk": "^2.4.2",
+    "resize-observer-polyfill": "^1.5.1",
     "webpack": "^5.79.0"
   },
   "devDependencies": {

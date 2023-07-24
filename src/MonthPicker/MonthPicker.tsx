@@ -4,7 +4,7 @@ import classes from './MonthPicker.module.css'
 import Input from '../UI/Input/Input'
 import { useDispatch, useSelector } from 'react-redux'
 import { type storeValuesType } from '../redux/reducers/rootReducer'
-import { changeMonthToCalculate } from '../redux/actions/dateTimeActions'
+import { changeMonthToCalculate } from '../redux/actions/DateTimeActions'
 
 export const MonthPicker: FC = () => {
   moment.locale('ru')

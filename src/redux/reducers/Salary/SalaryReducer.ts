@@ -1,5 +1,5 @@
 import { Salary } from '../../state/state'
-import { type SalaryByMonth } from '../../../CostList/Types/SalaryByMonth'
+import { type SalaryByMonth } from '../../../Infrastructure/Types/SalaryByMonth'
 import { type AnyAction } from 'redux'
 
 const initialState: SalaryByMonth[] = Salary

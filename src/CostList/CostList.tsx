@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { type CostItemType } from './Types/CostItemType'
+import { type CostItemType } from '../Infrastructure/Types/CostItemType'
 import { CostItem } from './CostItem/CostItem'
 import { CostItemAdd } from './CostItemAdd/CostItemAdd'
 import Button from '../UI/Button/Button'
@@ -11,12 +11,13 @@ import { toogleAddCostItemFormActionCreator } from '../redux/actions/uiActions'
 import { type storeValuesType } from '../redux/reducers/rootReducer'
 import groupBy from 'lodash.groupby'
 import moment from 'moment'
-import { type SalaryByMonth } from './Types/SalaryByMonth'
+import { type SalaryByMonth } from '../Infrastructure/Types/SalaryByMonth'
 import { AnalyticsMonthRow } from '../Analytics/AnalyticsMonthRow/AnalyticsMonthRow'
+import { type CategoryType } from '../Infrastructure/Types/CategoryType'
 
 export interface ICostItemListProps {
   costItems: CostItemType[]
-  categories: string[]
+  categories: CategoryType[]
   showForm: boolean
   monthToCalculate: string
   salary: SalaryByMonth[]
@@ -25,7 +26,7 @@ export interface ICostItemListProps {
 export interface ICostItemListState {
   costItems: CostItemType[]
   showForm: boolean
-  categories: string[]
+  categories: CategoryType[]
   salary: SalaryByMonth[]
 }
 

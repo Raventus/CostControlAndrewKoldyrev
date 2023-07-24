@@ -1,7 +1,7 @@
 import costItemReducer from './costItemReducer'
 import { COSTITEM_ADD, COSTITEM_DELETE } from '../../actions/actionTypes'
 import { type AddCostItemAction, type DeleteCostItemAction } from '../../actions/costItemActions'
-import { type CostItemType } from '../../../CostList/Types/CostItemType'
+import { type CostItemType } from '../../../Infrastructure/Types/CostItemType'
 
 describe('categoryReducer Test', () => {
   test('Send CATEGORIES_ADD return state with new Item', () => {

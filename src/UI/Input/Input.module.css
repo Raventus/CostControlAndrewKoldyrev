@@ -33,3 +33,8 @@
 .Input.invalid input{
     border: 3px solid red;
 }
+
+.LabelText {
+    color: white;
+    font-size: 30px;
+}

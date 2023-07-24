@@ -7,6 +7,7 @@
 build-storybook.log
 /coverage
 /.idea
+/reports
 yarn-error.log
 # production
 /build

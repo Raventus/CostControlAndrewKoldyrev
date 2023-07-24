@@ -1,9 +1,9 @@
 import { addCategoryActionCreator, deleteCategoryActionCreator } from './catrgoryActions'
 import { addCostItemActionCreator, deleteCostItemActionCreator } from './costItemActions'
 import { CATEGORIES_ADD, CATEGORIES_DELETE, COSTITEM_ADD, COSTITEM_DELETE, COSTITEM_TOOGLE_SHOW_ADD_FORM, DATETIME_CHANGE_MONTH_TO_CALCULATE } from './actionTypes'
-import { type CostItemType } from '../../CostList/Types/CostItemType'
+import { type CostItemType } from '../../Infrastructure/Types/CostItemType'
 import { toogleAddCostItemFormActionCreator } from './uiActions'
-import { changeMonthToCalculate } from './dateTimeActions'
+import { changeMonthToCalculate } from './DateTimeActions'
 
 describe('CategoryAction Test', () => {
   test('addCategoryActionCreator return valid object', () => {

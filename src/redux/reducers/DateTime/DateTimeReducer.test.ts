@@ -1,6 +1,6 @@
 import DateTimeReducer from './DateTimeReducer'
 import { DATETIME_CHANGE_MONTH_TO_CALCULATE } from '../../actions/actionTypes'
-import { type AddMonthToCalculateItemAction } from '../../actions/dateTimeActions'
+import { type AddMonthToCalculateItemAction } from '../../actions/DateTimeActions'
 
 describe('categoryReducer Test', () => {
   test('Send DATETIME_CHANGE_MONTH_TO_CALCULATE return state with new month', () => {

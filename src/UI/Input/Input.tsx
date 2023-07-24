@@ -30,7 +30,7 @@ const Input = (props: InputProps): JSX.Element => {
 
   return (
     <div className={cls.join(' ')}>
-      <label htmlFor={htmlFor}>{props.label}</label>
+      <label className={ classes.LabelText } htmlFor={htmlFor}>{props.label}</label>
       <input
         type={inputType}
         id={htmlFor}

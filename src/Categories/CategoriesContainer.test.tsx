@@ -1,8 +1,13 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import CategoriesContainer from './CategoriesContainer'
+import { CategoriesContainer } from './CategoriesContainer'
 import '@testing-library/jest-dom'
-import { type CostItemType } from '../CostList/Types/CostItemType'
+import { type CostItemType } from '../Infrastructure/Types/CostItemType'
+import { type CategoryType } from '../Infrastructure/Types/CategoryType'
+import { type AddCategoryAction } from '../redux/actions/catrgoryActions'
+import { CATEGORIES_ADD } from '../redux/actions/actionTypes'
+import { Provider } from 'react-redux'
+import store from '../redux/store/store'
 
 describe('CategoriesContainer Test', () => {
   test('render CostList component', () => {
@@ -33,12 +38,26 @@ describe('CategoriesContainer Test', () => {
       }
     ]
 
-    const categories: string[] = [
-      'Фрукты',
-      'Сантехника'
+    const categories: CategoryType[] = [
+      {
+        name: 'Фрукты',
+        id: 1
+      },
+      {
+        name: 'Сантехника',
+        id: 2
+      }
     ]
 
-    render(<CategoriesContainer items = {itemsArray} categories = {categories}/>)
+    const addCategory = (category: string): AddCategoryAction => {
+      return {
+        type: CATEGORIES_ADD,
+        category
+      }
+    }
+
+    render(<Provider store={store}><CategoriesContainer items = {itemsArray} categories = {categories} addCategory={addCategory}/>
+    </Provider>)
     screen.debug()
   })
   test('CategoriesContainer component contains', () => {
@@ -69,12 +88,24 @@ describe('CategoriesContainer Test', () => {
       }
     ]
 
-    const categories: string[] = [
-      'Фрукты',
-      'Сантехника'
+    const categories: CategoryType[] = [
+      {
+        name: 'Фрукты',
+        id: 1
+      },
+      {
+        name: 'Сантехника',
+        id: 2
+      }
     ]
+    const addCategory = (category: string): AddCategoryAction => {
+      return {
+        type: CATEGORIES_ADD,
+        category
+      }
+    }
 
-    render(<CategoriesContainer items = {itemsArray} categories = {categories}/>)
+    render(<Provider store={store}><CategoriesContainer items = {itemsArray} categories = {categories} addCategory = {addCategory}/></Provider>)
 
     expect(screen.getByText('Фрукты : 100')).toBeInTheDocument()
   })

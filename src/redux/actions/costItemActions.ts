@@ -1,5 +1,5 @@
 import { COSTITEM_ADD, COSTITEM_DELETE } from './actionTypes'
-import { type CostItemType } from '../../CostList/Types/CostItemType'
+import { type CostItemType } from '../../Infrastructure/Types/CostItemType'
 
 export interface AddCostItemAction {
   type: string

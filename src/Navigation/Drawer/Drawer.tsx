@@ -12,6 +12,10 @@ const links = [
   {
     to: '/categories',
     label: 'Категории'
+  },
+  {
+    to: '/analytics',
+    label: 'Аналитика'
   }
 ]
 

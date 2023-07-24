@@ -5,7 +5,7 @@
 
 ![Покрытие unit тестов :](./coverage/coverage.svg)
 
-[GitHub Actions](https://raventus.github.io/CostControlAndrewKoldyrev/#/auth)
+[GitHub Actions](https://raventus.github.io/CostControlAndrewKoldyrev/#/)
 
 [Хроматик](https://6459f56bc3200dd1a9b8a26c-nibnbxafjx.chromatic.com/?path=/story/ui-costitem--default)
 

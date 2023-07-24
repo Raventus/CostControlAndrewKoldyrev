@@ -1,6 +1,6 @@
 import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
-import { CostList } from './CostList'
+import CostList from './CostList'
 import '@testing-library/jest-dom'
 import { Provider } from 'react-redux'
 import store from '../redux/store/store'

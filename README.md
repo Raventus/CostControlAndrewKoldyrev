@@ -9,7 +9,7 @@
 
 [Хроматик](https://6459f56bc3200dd1a9b8a26c-nibnbxafjx.chromatic.com/?path=/story/ui-costitem--default)
 
-[Презентация](./Презентация Андрей Колдырев.pptx)
+[Презентация](https://github.com/Raventus/CostControlAndrewKoldyrev/blob/main/AndrewKoldyrev.pptx)
 
 Для входа необходимо ввести email (есть проверка корректности ввода).
 
